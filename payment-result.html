@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>كفوك | تأكيد الدفع</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Cairo',sans-serif;background:#FAF5EE;min-height:100vh;}
+.card{background:white;border-radius:24px;border:1px solid rgba(196,160,106,0.3);box-shadow:0 8px 32px rgba(45,27,78,0.08);}
+.spinner{display:inline-block;width:40px;height:40px;border:3px solid #5C1A6B;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+<link rel="stylesheet" href="/kafook-frame.css?v=20261024D">
+</head>
+<body class="p-4">
+<main class="sm:max-w-[440px] mx-auto pt-16">
+  <div class="card p-8 text-center">
+    <div id="state-loading">
+      <div class="flex justify-center mb-6"><span class="spinner"></span></div>
+      <h1 class="text-lg font-bold text-[#5C1A6B] mb-2">جاري التحقق من الدفع...</h1>
+      <p class="text-sm text-gray-500">لا تُغلق الصفحة. يستغرق الأمر ثوانٍ فقط.</p>
+    </div>
+    <div id="state-success" class="hidden">
+      <div class="text-5xl mb-4">✅</div>
+      <h1 class="text-xl font-bold text-[#5C1A6B] mb-2">تم الدفع بنجاح</h1>
+      <p class="text-sm text-gray-600 mb-6">شكراً لك. طلبك مؤكد وسيتواصل معك الفريق قريباً.</p>
+      <p id="ref-label" class="text-xs text-gray-400 mb-6"></p>
+      <a id="continue-btn" href="/index.html" class="inline-block bg-gradient-to-r from-[#5C1A6B] to-[#430f50] text-white px-8 py-3 rounded-xl font-bold text-sm">متابعة</a>
+    </div>
+    <div id="state-error" class="hidden">
+      <div class="text-5xl mb-4">⚠️</div>
+      <h1 class="text-lg font-bold text-[#5C1A6B] mb-2">تعذّر تأكيد الدفع</h1>
+      <p id="error-message" class="text-sm text-gray-600 mb-6">حدث خطأ أثناء التحقق.</p>
+      <div class="space-y-2">
+        <a id="retry-btn" href="/index.html" class="block bg-[#5C1A6B] text-white py-3 rounded-xl font-bold text-sm">العودة للرئيسية</a>
+        <a href="https://wa.me/966554949251" target="_blank" class="block text-sm text-[#5C1A6B] underline">تواصل مع الفريق</a>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+(function() {
+  var params = new URLSearchParams(location.search);
+  var paymentId = params.get('id');
+  var ref = params.get('ref');   // may be missing — we'll resolve it server-side
+  var status = params.get('status');
+
+  function show(id) {
+    ['state-loading','state-success','state-error'].forEach(function(s){
+      var el = document.getElementById(s);
+      if (el) el.classList.add('hidden');
+    });
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  // A failed payment never leads to the success page (it used to): the button is the next real
+  // step — pay again from the details page (same order, no duplicate), refresh, or contact us.
+  function fail(msg, refSafe, code) {
+    document.getElementById('error-message').textContent = msg || 'تعذّر التحقق من الدفع.';
+    var retry = document.getElementById('retry-btn');
+    if (code === 'gateway_unavailable' || code === 'server_error') {
+      retry.textContent = 'تحقّق مرة أخرى';
+      retry.href = location.href;
+    } else if (code === 'not_paid' || code === 'cancelled') {
+      retry.textContent = 'أعد محاولة الدفع';
+      retry.href = '/details.html';
+    } else {
+      retry.textContent = 'راسلنا عبر واتساب';
+      retry.href = 'https://wa.me/966554949251?text=' + encodeURIComponent('مرحباً، دفعت لطلب ' + (refSafe || '') + ' ورقم العملية ' + (paymentId || '') + ' ولم يتأكد الطلب');
+      retry.target = '_blank';
+    }
+    show('state-error');
+  }
+
+  if (!paymentId) {
+    fail('رقم العملية مفقود من الرابط. إن كنت قد دفعت، راسلنا وسنؤكد طلبك.', ref, 'missing_payment');
+    return;
+  }
+
+  if (status && status !== 'paid') {
+    var why = params.get('message');
+    fail('لم يكتمل الدفع ولم يُخصم المبلغ' + (why ? ' (' + why + ')' : '') + '. موعدك محجوز لدقائق — أعد المحاولة الآن.', ref, 'not_paid');
+    return;
+  }
+
+  // Server derives the order reference from Moyasar's payment description.
+  // ?ref= is optional and used only for the success-page redirect.
+  var url = '/api/payment/verify/' + encodeURIComponent(paymentId);
+  if (ref) url += '?ref=' + encodeURIComponent(ref);
+
+  fetch(url, { cache: 'no-store' })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if (data && data.success) {
+        var finalRef = ref || data.reference || '';
+        document.getElementById('ref-label').textContent = finalRef ? '#' + finalRef : '';
+        var successUrl = '/success.html?state=paid' + (finalRef ? '&ref=' + encodeURIComponent(finalRef) : '');
+        document.getElementById('continue-btn').href = successUrl;
+        show('state-success');
+        setTimeout(function(){ location.href = successUrl; }, 2500);
+      } else {
+        fail((data && data.error) || 'تعذّر التحقق من دفعتك.', ref, data && data.code);
+      }
+    })
+    .catch(function(err){
+      console.error('[payment-result] fetch error', err);
+      fail('تعذّر الاتصال بكفوك للتحقق من دفعتك. تأكّد من الإنترنت ثم حدّث الصفحة — إن خُصم المبلغ فطلبك محفوظ.', ref, 'gateway_unavailable');
+    });
+})();
+</script>
+<script src="/kafook-app.js?v=20261030A"></script>
+<script src="/pwa-install.js" defer></script>
+</body>
+</html>

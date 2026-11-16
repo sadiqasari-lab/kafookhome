@@ -1,0 +1,529 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>كفوك - تفاصيل الطلب (03 / 04)</title>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cairo & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#5B1E6B',
+              deepPurple: '#4A154B',
+              dark: '#2D1B4E',
+              gold: '#B8860B',
+              goldLight: '#C59324',
+              goldBorder: '#E5D6C5',
+              cream: '#FAF7F2',
+              creamLight: '#FDFBF7',
+              subtleBg: '#F7F3EB',
+              muted: '#7E6E8A',
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 2px 10px rgba(91, 30, 107, 0.04)',
+            'btn': '0 4px 14px rgba(91, 30, 107, 0.25)',
+            'gold-btn': '0 4px 14px rgba(184, 134, 11, 0.22)',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-decorations">
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f2ede4;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Ambient background diamond and sparkle motif matching design screenshots */
+    .bg-pattern {
+      background-color: #FAF7F2;
+      background-image: 
+        radial-gradient(#d6af68 0.85px, transparent 0.85px),
+        radial-gradient(#5b1e6b 0.65px, transparent 0.65px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      opacity: 0.98;
+    }
+
+    /* Directional coordinate input overrides */
+    .ltr-field {
+      direction: ltr;
+      text-align: left;
+    }
+
+    /* Focus outline matching theme */
+    input:focus, textarea:focus {
+      outline: none !important;
+      border-color: #5B1E6B !important;
+      box-shadow: 0 0 0 1.5px rgba(91, 30, 107, 0.25) !important;
+    }
+  </style>
+<link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.9.0/moyasar.css">
+<script src="https://cdn.moyasar.com/mpf/1.9.0/moyasar.js"></script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+<link rel="stylesheet" href="/kafook-frame.css?v=20261024D">
+</head>
+<body class="flex justify-center items-start min-h-screen p-0 sm:p-4">
+<!-- BEGIN: MobileDeviceFrame -->
+<div class="w-full max-w-[414px] min-h-screen bg-pattern border border-stone-200 shadow-2xl relative flex flex-col justify-between overflow-hidden pb-6" data-purpose="mobile-viewport-container">
+<!-- BEGIN: TopHeader -->
+<header class="px-5 pt-6 pb-2" data-purpose="header-stepper">
+<div class="flex justify-center mb-2"><img src="/assets/kafook-logo.svg" alt="كفوك" class="h-10 object-contain"></div>
+<!-- Stepper Nav & Back Action -->
+<div class="flex items-center justify-between text-brand-dark mb-3">
+<!-- Back Button with Arrow and Sparkle -->
+<button aria-label="الرجوع للخطوة السابقة" class="flex items-center gap-1 text-sm font-semibold text-brand-muted hover:text-brand-purple transition-colors" type="button">
+<svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+<span class="text-xs font-bold text-brand-dark/80">رجوع</span>
+<span class="text-xs text-brand-gold mr-0.5">✦</span>
+</button>
+<!-- Step Indicator -->
+<div class="text-xs font-extrabold tracking-wider font-jakarta text-brand-purple bg-purple-100/70 px-2.5 py-0.5 rounded-full border border-purple-200/50">
+          04 / 03
+        </div>
+</div>
+<!-- Ornamental Centered Diamond Divider -->
+<div class="flex items-center justify-center my-3 relative">
+<div class="w-2/3 h-px bg-stone-300/70"></div>
+<div class="absolute bg-[#FAF7F2] px-2 text-brand-gold text-xs">◆</div>
+</div>
+<!-- Mascot Assistant Sub-Header Banner -->
+<div class="bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2 flex items-center justify-between mt-3 text-[12px] shadow-sm">
+<div class="flex items-center gap-1.5 font-bold text-brand-dark">
+<span class="text-amber-500 text-sm">★</span>
+<span class="">كابتن كفوك معك</span>
+</div>
+<span class="text-brand-muted text-[11px] font-medium">تفاصيل بسيطة... والباقي علي.</span>
+</div>
+<!-- Trust Badges Pill Bar -->
+<div class="flex items-center justify-center gap-2 mt-3 overflow-x-auto py-1">
+<!-- Badge 1 -->
+<div class="inline-flex items-center gap-1 bg-white/95 border border-stone-200/80 rounded-full px-2.5 py-1 text-[11px] font-semibold text-brand-dark shadow-sm shrink-0">
+<svg class="w-3.5 h-3.5 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">موثّقون ومدرّبون</span>
+</div>
+<!-- Badge 2 -->
+<div class="inline-flex items-center gap-1 bg-white/95 border border-stone-200/80 rounded-full px-2.5 py-1 text-[11px] font-semibold text-brand-dark shadow-sm shrink-0">
+<svg class="w-3.5 h-3.5 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">بدون دفع الآن</span>
+</div>
+<!-- Badge 3 -->
+<div class="inline-flex items-center gap-1 bg-white/95 border border-stone-200/80 rounded-full px-2.5 py-1 text-[11px] font-semibold text-brand-dark shadow-sm shrink-0">
+<span class="text-brand-purple text-xs">✨</span>
+<span class="">ضمان رضاك</span>
+</div>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-5 py-2 space-y-4" data-purpose="form-main-content">
+<!-- Screen Headline Title & Subtext -->
+<section class="text-center mt-1 mb-4" data-purpose="screen-title-section">
+<h1 class="text-2xl sm:text-[26px] font-black text-brand-dark tracking-tight leading-snug">
+          تفاصيل بسيطة
+        </h1>
+<p class="text-[13px] text-brand-muted mt-1 font-medium">
+          ثلاث تفاصيل، وبعدها نرتّب كل شيء.
+        </p>
+</section>
+<!-- Basic Contact Form Fields -->
+<form class="space-y-3.5" id="details-form" onsubmit="event.preventDefault();">
+<!-- Field: First Name -->
+<div data-purpose="form-field-name">
+<label class="block text-xs font-bold text-brand-dark mb-1.5 mr-0.5" for="first-name">
+            الاسم الأول
+          </label>
+<div class="relative">
+<input class="w-full bg-white border border-stone-200/90 rounded-[14px] py-3 px-4 text-sm text-brand-dark placeholder-stone-400/90 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all font-medium" id="first-name" name="first-name" placeholder="مثال: نورة" type="text">
+</div>
+</div>
+<!-- Field: Phone Number -->
+<div data-purpose="form-field-phone">
+<label class="block text-xs font-bold text-brand-dark mb-1.5 mr-0.5" for="phone-number">
+            رقم الجوال
+          </label>
+<div class="relative flex items-center">
+<input class="w-full bg-white border border-stone-200/90 rounded-[14px] py-3 pl-4 pr-11 text-sm font-semibold tracking-wide text-brand-dark placeholder-stone-400/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all font-jakarta" dir="ltr" id="phone-number" name="phone" placeholder="05X XXX XXXX" type="tel">
+<!-- Outline Phone Icon -->
+<div class="absolute right-3.5 pointer-events-none text-stone-400">
+<svg class="w-5 h-5 text-[#bfa486]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Field: District / Neighborhood -->
+<div data-purpose="form-field-district">
+<label class="block text-xs font-bold text-brand-dark mb-1.5 mr-0.5" for="district-name">
+            الحي
+          </label>
+<input class="w-full bg-white border border-stone-200/90 rounded-[14px] py-3 px-4 text-sm text-brand-dark placeholder-stone-400/90 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all font-medium" id="district-name" name="district" placeholder="مثال: النرجس" type="text">
+</div>
+<!-- BEGIN: LocationCard -->
+<div class="bg-[#F8F2EC]/80 border border-[#E9DCF0] rounded-[20px] p-4 mt-2 shadow-sm" data-purpose="location-picker-card">
+<!-- Card Header -->
+<div class="flex items-start gap-2 mb-3">
+<div class="text-[#8c7457] mt-0.5 shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h2 class="text-[13px] font-bold text-brand-dark">وين يجينا فريق كفوك؟</h2>
+<p class="text-[11px] text-stone-500 mt-0.5 leading-relaxed font-normal">
+                شاركي موقعكِ بدقة، أو افتحي الخرائط واكتبي الإحداثيات قبل تأكيد الطلب.
+              </p>
+</div>
+</div>
+<!-- Share Current Location Button -->
+<button class="w-full bg-white border border-stone-200 rounded-[14px] py-3 px-4 flex items-center justify-center gap-2 text-brand-dark text-xs font-bold shadow-sm hover:bg-stone-50 transition-colors mb-3.5" type="button">
+<svg class="w-4 h-4 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 2v2m0 16v2m10-10h-2M4 10H2m15.364-5.364l-1.414 1.414M7.05 16.95l-1.414 1.414m12.728 0l-1.414-1.414M7.05 7.05L5.636 5.636M12 15a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">شارك موقعي الحالي</span>
+</button>
+<!-- Manual Coordinates Sub-card Box -->
+<div class="bg-white/90 border border-[#E9DCF0]/80 rounded-[16px] p-3.5 text-center shadow-xs">
+<div class="inline-flex items-center justify-center w-7 h-7 text-[#8c7457] mb-1">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<h3 class="text-xs font-bold text-brand-dark">ثبّت موقعك يدويًا</h3>
+<p class="text-[10.5px] text-stone-500 mt-1 max-w-[280px] mx-auto leading-normal">
+              افتح موقعك في الخرائط، وانسخ الإحداثيات هنا. فريق كفوك يستلمها بدقة مع طلبك.
+            </p>
+<!-- Coordinate Input Pills -->
+<div class="grid grid-cols-2 gap-2 mt-3 text-left">
+<input class="w-full bg-[#FAF7F2] border border-stone-200 text-stone-600 rounded-[12px] py-2 px-2.5 text-[10.5px] font-jakarta focus:bg-white text-center" dir="ltr" placeholder="Longitude - 46.6753" type="text">
+<input class="w-full bg-[#FAF7F2] border border-stone-200 text-stone-600 rounded-[12px] py-2 px-2.5 text-[10.5px] font-jakarta focus:bg-white text-center" dir="ltr" placeholder="Latitude - 24.7136" type="text">
+</div>
+<!-- Open Map Coordinator Link -->
+<a class="inline-flex items-center justify-center gap-1.5 mt-2.5 text-[11px] font-bold text-brand-purple hover:underline" href="#">
+<span class="">افتح الخرائط لالتقاط الإحداثيات</span>
+<span class="text-sm">←</span>
+</a>
+</div>
+<!-- Extended Address Input Header -->
+<div class="mt-3.5 mb-1.5 flex items-center justify-between">
+<div class="flex items-center gap-1 text-[11px] font-medium text-stone-500">
+<span class="font-bold text-brand-dark">العنوان أو وصف الوصول</span>
+<span class="text-[10px] text-stone-400">(اختياري)</span>
+</div>
+<div class="flex items-center gap-1 text-[10px] text-stone-400">
+<svg class="w-3 h-3 text-[#bfa486]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">شاركي موقع الخدمة أو اكتبي الإحداثيات</span>
+</div>
+</div>
+<!-- Address textarea / multi-line input -->
+<textarea class="w-full bg-white border border-stone-200/90 rounded-[14px] p-3 text-xs text-brand-dark placeholder-stone-400/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] resize-none font-medium" placeholder="رقم المبنى، اسم الشارع، أو تعليمات الوصول" rows="2"></textarea>
+</div>
+<!-- END: LocationCard -->
+<!-- Privacy & Security Guarantee Note -->
+<div class="bg-white/80 border border-stone-200/80 rounded-xl px-3 py-2 flex items-center justify-center gap-1.5 text-[11px] text-brand-muted shadow-xs">
+<svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-medium">تفاصيلك تستخدم لتأكيد طلبك فقط.</span>
+</div>
+
+<!-- Payment Method Selector -->
+<div class="bg-white border border-stone-200 rounded-[16px] p-4 space-y-3" data-purpose="payment-method">
+  <div class="flex items-center gap-2 mb-1">
+    <svg class="w-4 h-4 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+    </svg>
+    <span class="text-sm font-bold text-brand-dark">طريقة الدفع</span>
+  </div>
+
+  <label class="flex items-start gap-3 p-3 rounded-[12px] border-2 border-brand-purple bg-purple-50/50 cursor-pointer transition-colors" data-pm="online">
+    <input type="radio" name="paymentMethod" value="online" class="mt-1 accent-brand-purple" checked>
+    <div class="flex-1">
+      <div class="text-sm font-bold text-brand-dark">الدفع الآن عبر الإنترنت</div>
+      <div class="text-xs text-gray-500 mt-0.5">مدى · Visa · Mastercard · Apple Pay · STC Pay</div>
+    </div>
+  </label>
+
+  <label class="flex items-start gap-3 p-3 rounded-[12px] border-2 border-stone-200 cursor-pointer transition-colors" data-pm="pos">
+    <input type="radio" name="paymentMethod" value="pos" class="mt-1 accent-brand-purple">
+    <div class="flex-1">
+      <div class="text-sm font-bold text-brand-dark">الدفع عند الوصول</div>
+      <div class="text-xs text-gray-500 mt-0.5">نقداً أو بشبكة (مدى) للفريق الميداني</div>
+    </div>
+  </label>
+</div>
+</form>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomStickyActions -->
+<footer class="px-5 pt-2 pb-4 space-y-3" data-purpose="bottom-action-buttons">
+<!-- Referral / Incentive Gold Banner Button -->
+<button class="w-full bg-gradient-to-r from-[#A5781E] via-[#B8860B] to-[#C99824] hover:brightness-105 active:scale-[0.99] text-white font-bold py-3 px-4 rounded-[14px] shadow-gold-btn flex items-center justify-center gap-1.5 transition-all text-xs sm:text-sm" type="button">
+<span class="text-sm">✦</span>
+<span class="">خلي غيرك يستفيد</span>
+</button>
+<!-- Primary Action: Review Order CTA -->
+<button class="w-full bg-gradient-to-r from-brand-purple to-brand-deepPurple hover:brightness-110 active:scale-[0.99] text-white font-bold py-3.5 px-4 rounded-[16px] shadow-btn flex items-center justify-between transition-all" type="button">
+<!-- Gold / Subtle Arrow -->
+<span class="text-stone-200 text-lg pr-1">←</span>
+<!-- Button Title -->
+<span class="text-sm sm:text-[15px] font-extrabold tracking-tight">راجع طلبك</span>
+<!-- Spacer to balance flex -->
+<span class="w-4"></span>
+</button>
+<!-- Bottom Micro Trust Bar -->
+<div class="flex items-center justify-center gap-2 text-[10px] text-stone-500 font-medium pt-1">
+<div class="flex items-center gap-1">
+<svg class="w-3 h-3 text-[#b8860b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">طلب واضح</span>
+</div>
+<span class="text-stone-300">•</span>
+<div class="flex items-center gap-1">
+<svg class="w-3 h-3 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+
+</div>
+<span class="text-stone-300">•</span>
+<div class="flex items-center gap-1">
+<span class="text-[#b8860b] text-[9px]">✦</span>
+<span class="">خطوة بخطوة</span>
+</div>
+</div>
+</footer>
+<!-- END: BottomStickyActions -->
+</div>
+<!-- END: MobileDeviceFrame -->
+<script src="/kafook-app.js?v=20261030A"></script>
+<script>
+(function(){
+  try {
+    var orders = JSON.parse(localStorage.getItem('kafook_my_orders') || '[]');
+    if (!orders.length) return;
+    var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    // only where it helps (home, success): on the booking steps it covered the step counter, back and close buttons
+    if (page !== 'index.html' && page !== '' && page !== 'success.html') return;
+    var btn = document.createElement('a');
+    btn.href = '/track.html';
+    btn.style.cssText = 'position:fixed;top:76px;left:16px;z-index:40;background:#5C1A6B;color:white;padding:8px 14px;border-radius:999px;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(92,26,107,0.3);';
+    btn.innerHTML = '📋 طلباتي (' + orders.length + ')';
+    document.body.appendChild(btn);
+  } catch(e){}
+})();
+</script>
+
+<!-- Moyasar Payment Modal -->
+<div id="moyasar-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm overflow-y-auto" style="-webkit-overflow-scrolling: touch;">
+  <div class="min-h-full flex items-start justify-center p-4 pt-8 pb-8">
+    <div class="w-full sm:max-w-[440px] bg-white rounded-[24px] shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-stone-200">
+        <div>
+          <div class="text-sm font-bold text-brand-dark">إتمام الدفع</div>
+          <div class="text-[11px] text-gray-500 mt-0.5" id="moyasar-ref-label">جاري التحميل...</div>
+        </div>
+        <button type="button" id="moyasar-close" class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 hover:bg-stone-200 transition-colors" aria-label="إغلاق">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="mysr-form"></div>
+      </div>
+      <div class="px-5 py-3 bg-stone-50 border-t border-stone-200 text-center">
+        <p class="text-[10px] text-stone-500">🔒 جميع البيانات مشفرة. لن تُخصم من بطاقتك إلا بعد تأكيد الطلب.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/pwa-install.js" defer></script>
+</body></html>

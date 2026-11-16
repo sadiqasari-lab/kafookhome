@@ -1,0 +1,431 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;700;800&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html, body { width: 100%; max-width: 100%; overflow-x: hidden;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-surface-variant": "#49454e", "tertiary-fixed-dim": "#d2beed", "on-secondary-container": "#795c1d", "surface-container": "#f6e9ff", "primary-fixed": "#ebddff", "on-tertiary": "#ffffff", "secondary-fixed-dim": "#e8c178", "on-tertiary-fixed-variant": "#4f4066", "error": "#ba1a1a", "error-container": "#ffdad6", "on-secondary": "#ffffff", "primary-fixed-dim": "#d2bcfa", "secondary-container": "#ffd88d", "primary": "#170338", "surface-dim": "#e4d4f2", "outline-variant": "#cbc4d0", "on-primary-fixed": "#231043", "on-tertiary-fixed": "#221438", "surface-bright": "#fff7ff", "primary-container": "#2d1b4e", "surface-container-highest": "#ecddfa", "surface-tint": "#68558b", "secondary": "#775a1b", "secondary-fixed": "#ffdea3", "inverse-on-surface": "#f8edff", "surface-variant": "#ecddfa", "surface-container-high": "#f2e3ff", "outline": "#7a757f", "on-primary": "#ffffff", "on-primary-fixed-variant": "#4f3d72", "surface": "#fff7ff", "inverse-primary": "#d2bcfa", "surface-container-low": "#faf0ff", "on-error": "#ffffff", "on-tertiary-container": "#9685b0", "tertiary-fixed": "#ecdcff", "on-primary-container": "#9783bd", "inverse-surface": "#362c42", "on-secondary-fixed": "#261900", "tertiary": "#16082c", "on-secondary-fixed-variant": "#5c4203", "on-background": "#20172c", "on-surface": "#20172c", "surface-container-lowest": "#ffffff", "background": "#fff7ff", "on-error-container": "#93000a", "tertiary-container": "#2c1e42" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: {}, fontFamily: { "headline": ["Plus Jakarta Sans", "IBM Plex Sans Arabic", "sans-serif"], "display": ["Plus Jakarta Sans", "IBM Plex Sans Arabic", "sans-serif"], "body": ["IBM Plex Sans", "IBM Plex Sans Arabic", "sans-serif"], "label": ["IBM Plex Sans", "IBM Plex Sans Arabic", "sans-serif"] }, fontSize: {} } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18541973085"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18541973085');
+</script>
+    <!-- TikTok Pixel -->
+    <script>
+      !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+        ttq.load('DAB90V3C77UES974BUSG');
+        ttq.page();
+      }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel -->
+
+    <script>if(typeof ttq === 'object'){ttq.track('InitiateCheckout', {contents: [{content_id: 'services_page', content_type: 'product'}]});}</script>
+</head><body class="font-body text-on-surface flex flex-col min-h-screen" style="background-color: rgb(250, 245, 238); background-image: radial-gradient(rgb(199, 163, 92) 1.2px, transparent 1.2px), radial-gradient(rgb(92, 26, 107) 0.7px, rgb(250, 245, 238) 0.7px); background-size: 32px 32px; background-position: 0px 0px, 16px 16px;"><header class="fixed top-0 w-full z-50 pt-safe backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" style="background-color: rgba(250, 245, 238, 0.88); border-bottom: 1px solid rgba(229, 214, 197, 0.5);"><div class="h-14 px-4 flex items-center justify-between"><div class="flex items-center gap-2"><img alt="كفوك" class="h-8 w-auto object-contain" src="/assets/kafook-logo.svg"><span class="text-lg font-headline font-bold text-primary">كفوك</span><span class="text-xs text-on-surface-variant font-medium hidden">Services</span></div><div class="flex items-center gap-2"><button class="w-11 h-11 rounded-full flex items-center justify-center bg-surface-container-high/60 backdrop-blur-md text-primary transition-colors hover:bg-surface-container-highest"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-14 pb-20 flex-grow min-h-screen"><div class="flex flex-col w-full relative px-4 pb-8 overflow-hidden select-none" dir="rtl">
+<!-- Subtle Arabesque Ambient Watermark Pattern -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.035] flex items-center justify-center">
+<svg class="w-full h-full" fill="currentColor" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+<path class="text-secondary" d="M200 60 L220 100 L260 120 L220 140 L200 180 L180 140 L140 120 L180 100 Z"></path>
+<path class="text-primary" d="M80 320 L95 350 L125 365 L95 380 L80 410 L65 380 L35 365 L65 350 Z"></path>
+<path class="text-secondary" d="M320 280 L335 310 L365 325 L335 340 L320 370 L305 340 L275 325 L305 310 Z"></path>
+<path class="text-secondary" d="M200 520 L218 555 L253 573 L218 591 L200 626 L182 591 L147 573 L182 555 Z"></path>
+</svg>
+</div>
+<!-- Micro Progress & Step Indicator -->
+<div class="flex items-center justify-between pt-3 mb-2">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">arrow_back_ios_new</span>
+<span class="text-xs font-semibold tracking-wide">بداية راحة البال</span>
+</div>
+<div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-headline text-xs font-bold tracking-wider">
+      01 / 04
+    </div>
+</div>
+<!-- Decorative Arabesque Divider -->
+<div class="flex items-center justify-center gap-3 my-2 opacity-80">
+<div class="h-px bg-gradient-to-l from-transparent via-outline-variant to-transparent flex-1"></div>
+<span class="material-symbols-outlined text-secondary text-sm">diamond</span>
+<div class="h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent flex-1"></div>
+</div>
+<!-- Header Zone -->
+<section class="mt-2 mb-4">
+<h1 class="text-[28px] font-headline font-black text-primary leading-tight tracking-tight mb-1.5">
+      خدمات كفوك
+    </h1>
+<p class="text-on-surface-variant text-[14px] leading-relaxed font-normal">
+      اختر الخدمة اللي يحتاجها بيتك، والباقي على كابتن كفوك.
+    </p>
+<!-- Trust Badges Strip -->
+<div class="flex items-center justify-between mt-3 py-2 px-3 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-1 text-[11px] font-semibold text-secondary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+<span class="">ضمان رضاك</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1 text-[11px] font-semibold text-primary">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span class="">فنيون معتمدون</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1 text-[11px] font-semibold text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px]">home_repair_service</span>
+<span class="">بدون رسوم مخفية</span>
+</div>
+</div>
+</section>
+<!-- Service Cards Flow -->
+<div class="flex flex-col gap-3.5 my-1">
+<!-- Card 1: Maintenance & Repairs -->
+<div class="service-card group cursor-pointer relative bg-surface-container-lowest rounded-2xl p-4 shadow-[0_6px_20px_rgba(45,27,78,0.05)] transition-all duration-300 hover:shadow-[0_10px_26px_rgba(45,27,78,0.09)] active:scale-[0.99]" data-selected="false" onclick="selectService(this)">
+<div class="flex items-start gap-3.5">
+<!-- Leading Icon Pod -->
+<div class="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-secondary text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">home_repair_service</span>
+</div>
+<!-- Content Body -->
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-headline font-bold text-primary">الصيانة والإصلاح</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary-container text-on-secondary-container shadow-xs">
+                الأعلى طلباً
+              </span>
+</div>
+<!-- Arrow Selection Pill -->
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2 mb-3">
+            فحص شامل وإصلاح فوري — تكييف، سباكة، كهرباء متقدمة، وكشف التسريبات الدقيقة بأحدث الأجهزة.
+          </p>
+<!-- Footer Metadata & Price -->
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold font-headline">
+<span class="material-symbols-outlined text-[14px]">sell</span>
+<span class="">تبدأ من ٣٠ ر.س</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">bolt</span>
+              وصول خلال ساعتين
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Deep Cleaning -->
+<div class="service-card group cursor-pointer relative bg-surface-container-lowest rounded-2xl p-4 shadow-[0_6px_20px_rgba(45,27,78,0.05)] transition-all duration-300 hover:shadow-[0_10px_26px_rgba(45,27,78,0.09)] active:scale-[0.99]" data-selected="false" onclick="selectService(this)">
+<div class="flex items-start gap-3.5">
+<!-- Leading Icon Pod -->
+<div class="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-secondary text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">cleaning_services</span>
+</div>
+<!-- Content Body -->
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-headline font-bold text-primary">التنظيف العميق</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-surface-container-highest text-primary">
+                باقات مخصصة
+              </span>
+</div>
+<!-- Arrow Selection Pill -->
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2 mb-3">
+            قطعة بقطعة أو باقة متكاملة — تعقيم المفروشات، غسيل الكنب والسجاد بالبخار، وتنظيف خزانات المياه.
+          </p>
+<!-- Footer Metadata & Price -->
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold font-headline">
+<span class="material-symbols-outlined text-[14px]">sell</span>
+<span class="">تبدأ من ٢٩ ر.س</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">sanitizer</span>
+              مواد صديقة للبيئة
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Pest Control -->
+<div class="service-card group cursor-pointer relative rounded-2xl p-4 shadow-[0_6px_20px_rgba(45,27,78,0.05)] transition-all duration-300 hover:shadow-[0_10px_26px_rgba(45,27,78,0.09)] active:scale-[0.99] bg-surface-container-high scale-[1.01]" data-selected="true" onclick="selectService(this)">
+<div class="flex items-start gap-3.5">
+<!-- Leading Icon Pod -->
+<div class="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-secondary text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">pest_control</span>
+</div>
+<!-- Content Body -->
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-headline font-bold text-primary">مكافحة الحشرات</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-fixed text-on-primary-fixed">
+                آمن للأطفال
+              </span>
+</div>
+<!-- Arrow Selection Pill -->
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2 mb-3">
+            رش وقائي موسمي معتمد · برنامج ٤ زيارات دورية · معالجة طارئة بمبيدات مرخصة بدون رائحة أو إخلاء.
+          </p>
+<!-- Footer Metadata & Price -->
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold font-headline">
+<span class="material-symbols-outlined text-[14px]">sell</span>
+<span class="">تبدأ من ٢٠٠ ر.س</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">security</span>
+              ضمان ٣ أشهر
+            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Captain Kafoor Guarantee Banner -->
+<div class="relative overflow-hidden rounded-[20px] p-4 my-3 text-white flex items-center justify-between gap-3 shadow-[0_0_30px_rgba(196,160,106,0.25)] border border-[#C4A06A]" style="min-height: 120px; background: linear-gradient(135deg, rgb(92, 26, 107), rgb(122, 34, 142), rgb(92, 26, 107));"><span class="absolute top-3 left-4 text-[#e7c088] opacity-80 text-sm select-none pointer-events-none">✦</span><div class="flex items-center gap-3.5 flex-1 min-w-0"><div class="w-16 h-16 rounded-full flex items-center justify-center shrink-0 border border-[#C4A06A]" style="background: rgba(255, 255, 255, 0.1);"><span class="material-symbols-outlined text-[#e7c088] text-[36px]" style="font-variation-settings: &quot;FILL&quot; 1;">fort</span></div><div class="flex flex-col flex-1 min-w-0 pr-1"><h3 class="text-[18px] font-extrabold text-white font-headline leading-tight mb-1" style="font-family: Cairo, &quot;Plus Jakarta Sans&quot;, sans-serif; font-weight: 800;">قصور ومساكن خاصة</h3><p class="text-[12px] text-[#f0e5ff] leading-[18px] font-normal m-0" style="font-family: Cairo, &quot;IBM Plex Sans Arabic&quot;, sans-serif;">فحص خاص وعرض سعر مخصص خلال 24 ساعة</p></div></div><div class="shrink-0"><a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#C4A06A] text-[#e7c088] text-[12px] font-bold transition-all hover:bg-white/10 active:scale-95" style="background: rgba(255, 255, 255, 0.08); font-family: Cairo, &quot;Plus Jakarta Sans&quot;, sans-serif; font-weight: 700;"><span class="material-symbols-outlined text-[#e7c088] text-[16px]">chat</span><span class="">تواصل معنا</span></a></div></div><section class="relative z-20 px-4 py-2 flex-shrink-0 mt-3">
+<div class="h-[76px] bg-white/[0.08] backdrop-blur-xl border border-white/15 rounded-2xl p-2.5 flex items-center justify-between relative shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+<div class="absolute top-[26px] right-8 left-8 h-[1px] border-t border-dashed border-[#e7c088]/40 z-0"></div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="step-circle w-7 h-7 rounded-full bg-white/10 backdrop-blur-md text-[#c1bcc9] border border-white/20 font-cairo font-bold text-xs flex items-center justify-center">1</div>
+<span class="mt-1.5 font-cairo font-semibold text-[11px] step-label text-[#c1bcc9]">جاهز</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-[#5C1A6B] text-[#e7c088] font-cairo font-black text-xs flex items-center justify-center shadow-[0_0_12px_#5C1A6B] border-2 border-[#e7c088] transform scale-105 transition-transform">2</div>
+<span class="mt-1 font-cairo font-semibold text-[11px] step-label text-[#fce8c4] tracking-tight">واضح</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="step-circle w-7 h-7 rounded-full bg-white/10 backdrop-blur-md text-[#c1bcc9] border border-white/20 font-cairo font-bold text-xs flex items-center justify-center">3</div>
+<span class="mt-1.5 font-cairo font-semibold text-[11px] step-label text-[#c1bcc9]">مطمئن</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="step-circle w-7 h-7 rounded-full bg-white/10 backdrop-blur-md text-[#c1bcc9] border border-white/20 font-cairo font-bold text-xs flex items-center justify-center">4</div>
+<span class="mt-1.5 font-cairo font-semibold text-[11px] step-label text-[#c1bcc9]">راحة</span>
+</div>
+</div>
+</section>
+<!-- Primary Next CTA Button -->
+<div class="mt-4 flex flex-col gap-2">
+<button class="w-full h-13 py-3.5 px-5 rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-headline font-bold text-base flex items-center justify-between shadow-[0_10px_28px_rgba(45,27,78,0.22)] active:scale-[0.98] transition-all duration-200" id="next-btn">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">calendar_add_on</span>
+<span class="">التالي: اختيار الموعد</span>
+</div>
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<!-- Bottom Safety Assurance -->
+<div class="flex items-center justify-center text-on-surface-variant pt-1 font-medium" style="gap: 12px; font-family: Cairo, &quot;IBM Plex Sans Arabic&quot;, sans-serif; font-size: 12px; font-weight: 600;"><div class="flex items-center gap-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;color:#b88928;flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><polyline points="8 12 11 15 16 9"></polyline></svg><span class="">طلب واضح وسريع</span></div><div class="flex items-center gap-1"><span class="material-symbols-outlined text-secondary" style="font-size: 16px; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;">schedule</span><span class="">بدون دفع مسبق الآن</span></div><div class="flex items-center gap-1"><span class="material-symbols-outlined text-secondary" style="font-size: 16px; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;">verified</span><span class="">خطوة بخطوة</span></div></div>
+</div>
+</div>
+<script>
+  function selectService(cardElement) {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach(card => {
+      card.setAttribute('data-selected', 'false');
+      card.classList.remove('bg-surface-container-high', 'scale-[1.01]');
+      card.classList.add('bg-surface-container-lowest');
+    });
+    
+    cardElement.setAttribute('data-selected', 'true');
+    cardElement.classList.remove('bg-surface-container-lowest');
+    cardElement.classList.add('bg-surface-container-high', 'scale-[1.01]');
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe backdrop-blur-xl shadow-[0_-2px_12px_rgba(45,27,78,0.06)]" data-active-classes="text-secondary font-semibold" style="background-color: rgba(250, 245, 238, 0.92); border-top: 1px solid rgba(229, 214, 197, 0.6);"></nav>
+
+
+
+
+
+<script src="/kafook-app.js?v=20261005X"></script>
+<script>
+(function(){
+  try {
+    var orders = JSON.parse(localStorage.getItem('kafook_my_orders') || '[]');
+    if (!orders.length) return;
+    var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    if (page === 'track.html' || page === 'order-status.html') return;
+    var btn = document.createElement('a');
+    btn.href = '/track.html';
+    btn.style.cssText = 'position:fixed;top:76px;left:16px;z-index:40;background:#5C1A6B;color:white;padding:8px 14px;border-radius:999px;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(92,26,107,0.3);';
+    btn.innerHTML = '📋 طلباتي (' + orders.length + ')';
+    document.body.appendChild(btn);
+  } catch(e){}
+})();
+</script>
+<script src="/pwa-install.js" defer></script>
+</body></html>
+
+
+Pest control

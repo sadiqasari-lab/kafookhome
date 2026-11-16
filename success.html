@@ -1,0 +1,536 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"><meta content="mobile_blank" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed-dim": "#d2bcfa", "surface-bright": "#fff7ff", "tertiary-fixed-dim": "#d2beed", "on-primary-fixed": "#231043", "surface-container": "#f6e9ff", "outline": "#7a757f", "on-error": "#ffffff", "inverse-primary": "#d2bcfa", "primary-container": "#2d1b4e", "secondary-container": "#ffd88d", "secondary-fixed-dim": "#e8c178", "secondary": "#775a1b", "on-surface-variant": "#49454e", "on-secondary": "#ffffff", "primary": "#170338", "surface-container-high": "#f2e3ff", "outline-variant": "#cbc4d0", "background": "#fff7ff", "on-secondary-fixed": "#261900", "on-tertiary-fixed": "#221438", "error": "#ba1a1a", "on-primary-container": "#9783bd", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#4f3d72", "on-tertiary": "#ffffff", "surface-container-highest": "#ecddfa", "surface": "#fff7ff", "surface-dim": "#e4d4f2", "on-error-container": "#93000a", "on-tertiary-fixed-variant": "#4f4066", "on-primary": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#9685b0", "secondary-fixed": "#ffdea3", "on-surface": "#20172c", "primary-fixed": "#ebddff", "on-background": "#20172c", "tertiary-fixed": "#ecdcff", "tertiary": "#16082c", "inverse-on-surface": "#f8edff", "surface-container-low": "#faf0ff", "surface-variant": "#ecddfa", "on-secondary-fixed-variant": "#5c4203", "surface-tint": "#68558b", "inverse-surface": "#362c42", "tertiary-container": "#2c1e42", "on-secondary-container": "#795c1d" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, fontFamily: { "headline": ["Plus Jakarta Sans", "sans-serif"], "display": ["Plus Jakarta Sans", "sans-serif"], "body": ["IBM Plex Sans", "sans-serif"], "label": ["IBM Plex Sans", "sans-serif"] } } } };</script><style>
+@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}
+::-webkit-scrollbar{display:none;}
+
+/* Dynamic Celebration Animations */
+@keyframes heroicPulse {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.9;
+  }
+}
+
+@keyframes heroicRingBurst {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkleSparkle {
+  0%, 100% {
+    transform: scale(0.65) rotate(0deg);
+    opacity: 0.35;
+    filter: drop-shadow(0 0 2px rgba(255,224,130,0.4));
+  }
+  50% {
+    transform: scale(1.3) rotate(30deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,224,130,0.9));
+  }
+}
+
+@keyframes celebrationBadgePop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes confettiRain {
+  0% {
+    transform: translateY(-20px) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(105vh) rotate(540deg) scale(1.05);
+    opacity: 0;
+  }
+}
+
+.anim-sparkle {
+  animation: twinkleSparkle 2.6s infinite ease-in-out;
+}
+.anim-pulse-aura {
+  animation: heroicPulse 3.5s infinite ease-in-out;
+}
+.anim-ring-wave {
+  animation: heroicRingBurst 3.2s infinite cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+.anim-badge-entry {
+  animation: celebrationBadgePop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-sparkle, .anim-pulse-aura, .anim-ring-wave, .anim-badge-entry, .confetti-particle {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+</style><link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+
+    <!-- TikTok Pixel -->
+    <script>
+      !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+        ttq.load('DAB90V3C77UES974BUSG');
+        ttq.page();
+      }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel -->
+
+    <script>if(typeof ttq === 'object'){ttq.track('Purchase', {contents: [{content_id: 'completed_order', content_type: 'product'}]});}</script>
+</head><body class="bg-gradient-to-b from-primary via-primary-container to-tertiary text-on-primary font-body antialiased flex flex-col min-h-screen selection:bg-secondary selection:text-on-secondary relative overflow-x-hidden">
+<!-- Celebration Confetti Layer Container -->
+<div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden z-20" id="confetti-container"><div class="confetti-particle pointer-events-none" style="position: absolute; left: 36.873vw; top: -20px; width: 7.17273px; height: 11.4764px; opacity: 0; z-index: 20; animation: 4.73188s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 normal forwards running confettiRain; background-color: rgb(210, 188, 250); border-radius: 2px; box-shadow: rgba(210, 188, 250, 0.267) 0px 0px 6px;"></div><div class="confetti-particle pointer-events-none" style="position: absolute; left: 34.537vw; top: -20px; width: 10.7544px; height: 10.7544px; opacity: 0; z-index: 20; animation: 5.53166s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 normal forwards running confettiRain; color: rgb(210, 188, 250); font-size: 16.1316px; line-height: 1; text-shadow: rgb(210, 188, 250) 0px 0px 6px;">✦</div></div>
+<main class="flex-1 flex flex-col relative w-full pt-11 pb-safe z-10">
+    <!-- CAPTAIN KAFOOK MASCOT -->
+    <section id="kafook-success-mascot" class="relative w-full px-4 pt-4 pb-2 flex flex-col items-center">
+      <div class="relative w-[200px] sm:w-[240px] aspect-[3/5] rounded-[28px] overflow-hidden shadow-[0_18px_50px_rgba(92,26,107,0.35)] bg-gradient-to-b from-[#2b1b3d] to-[#170338]">
+        <img src="/assets/captain-kafook-data.png" alt="كابتن كفوك" class="absolute inset-0 w-full h-full object-cover object-top">
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#170338]/95 to-transparent"></div>
+        <div class="pointer-events-none absolute bottom-3 inset-x-0 text-center">
+          <span class="font-cairo font-black text-[13px] text-[#fce8c4] tracking-tight">كابتن كفوك</span>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <p class="font-cairo text-[11px] text-[#c7a35c] font-bold tracking-widest uppercase">شكراً لثقتك</p>
+      </div>
+    </section>
+<div class="flex flex-col w-full min-w-0 text-on-primary select-none overflow-x-hidden" dir="rtl">
+<!-- Interactive Celebratory Canvas & Glow Layer -->
+<div class="relative w-full px-5 pb-6 flex flex-col items-center">
+<!-- Ambient Gold & Purple Glow Orbs -->
+<div class="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gradient-to-b from-secondary-fixed/30 via-secondary-container/20 to-transparent blur-3xl -z-10 anim-pulse-aura"></div>
+<div class="pointer-events-none absolute top-24 left-1/2 -translate-x-1/2 w-56 h-56 rounded-full bg-primary-fixed-dim/20 blur-2xl -z-10"></div>
+<!-- Floating Sparkle Accents (✦) with rich staggered twinkling -->
+<span class="pointer-events-none absolute top-6 right-8 text-secondary-fixed-dim/80 text-xl anim-sparkle" style="animation-delay: 0.2s;">✦</span>
+<span class="pointer-events-none absolute top-16 right-5 text-secondary-fixed text-sm anim-sparkle" style="animation-delay: 1.1s;">✦</span>
+<span class="pointer-events-none absolute top-24 right-14 text-secondary-fixed/50 text-xs anim-sparkle" style="animation-delay: 0.7s;">✦</span>
+<span class="pointer-events-none absolute top-10 left-10 text-secondary-fixed-dim/75 text-base anim-sparkle" style="animation-delay: 0.4s;">✦</span>
+<span class="pointer-events-none absolute top-24 left-6 text-secondary-fixed text-sm anim-sparkle" style="animation-delay: 1.5s;">✦</span>
+<span class="pointer-events-none absolute top-36 left-8 text-secondary-fixed/40 text-xs anim-sparkle" style="animation-delay: 1.9s;">✦</span>
+<span class="pointer-events-none absolute top-48 right-6 text-secondary-fixed/60 text-xs anim-sparkle" style="animation-delay: 0.9s;">✦</span>
+<span class="pointer-events-none absolute top-3 left-1/4 text-secondary-fixed/45 text-xs anim-sparkle" style="animation-delay: 1.3s;">✦</span>
+<!-- Top Celebration Stamp / Status Pill -->
+<div class="mt-2 mb-3 flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-primary-container/85 border border-secondary-fixed/30 backdrop-blur-md shadow-[0_0_18px_rgba(199,163,92,0.35)] anim-badge-entry">
+<span class="material-symbols-outlined text-secondary-fixed text-[17px] anim-sparkle" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+<span class="font-headline font-bold text-xs tracking-wide text-secondary-fixed">تم اعتماد الطلب بنجاح</span>
+<span class="text-secondary-fixed text-[11px] mr-1 anim-sparkle">✦</span>
+</div>
+<!-- Hero Character & Visual Framing (Captain Kafook) -->
+<div class="relative w-full max-w-[340px] sm:max-w-[380px] flex flex-col items-center justify-end h-[230px] pt-1">
+<!-- Dynamic Celebratory Radial Glow & Expanding Waves -->
+<div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-secondary-fixed/30 anim-ring-wave"></div>
+<div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border border-[#C7A35C]/40 anim-ring-wave" style="animation-delay: 1.4s;"></div>
+<div class="absolute bottom-2 w-48 h-10 rounded-full bg-secondary-fixed/30 blur-xl anim-pulse-aura"></div>
+<div class="absolute bottom-0 w-36 h-3 rounded-full bg-primary/70 blur-sm"></div>
+<!-- Mascot Aura Ring -->
+<div class="absolute top-4 w-44 h-44 rounded-full bg-gradient-to-tr from-[#C7A35C]/35 via-primary-fixed-dim/20 to-transparent blur-lg anim-pulse-aura"></div>
+<!-- Mascot Image Asset -->
+<div class="relative z-10 w-full h-full flex items-center justify-center">
+<img alt="كفوك" class="h-8 w-auto object-contain" src="/assets/kafook-logo.svg">
+</div>
+<!-- Small Floating "تم" Badge on bottom corner of mascot -->
+</div>
+<!-- Headline & Heartfelt Reassurance Copy -->
+<div class="w-full text-center mt-3">
+<h1 class="font-headline font-extrabold text-[27px] leading-tight text-surface-bright tracking-tight flex items-center justify-center gap-2">
+<span class="">تم استلام طلبك</span>
+</h1>
+<p class="font-body font-normal text-[14px] leading-relaxed text-surface-container-highest/90 max-w-[300px] sm:max-w-[340px] mx-auto mt-2">
+        كابتن كفوك راجع طلبك بعناية، وسنرسل لك تفاصيل الموعد والفني المعتمد خلال دقائق.
+      </p>
+</div>
+<!-- Glassmorphic Order Summary Voucher Card -->
+<div class="w-full max-w-[350px] sm:max-w-[390px] mt-5 rounded-xl bg-surface-container-lowest/10 backdrop-blur-xl p-4 shadow-xl transition-all duration-300 hover:bg-surface-container-lowest/15 border border-white/5">
+<!-- Decorative Micro Label -->
+<div class="flex items-center justify-between pb-2 mb-2.5">
+<div class="flex items-center gap-1.5 text-secondary-fixed-dim font-headline font-bold text-[11px] uppercase tracking-wider">
+<span class="material-symbols-outlined text-[15px] text-secondary-fixed">assignment_turned_in</span>
+<span class="">تفاصيل الحجز المؤكد</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-secondary-fixed bg-primary/40 px-2 py-0.5 rounded-full border border-secondary-fixed/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+          قيد المعالجة
+        </span>
+</div>
+<!-- Detail Rows -->
+<div class="flex flex-col gap-2.5 text-xs">
+<!-- Row 1: Order ID -->
+<div class="flex items-center justify-between py-1.5 px-2 rounded-lg bg-primary-container/40">
+<span class="font-body font-medium text-surface-variant/80">رقم الطلب المرجعي</span>
+<div class="flex items-center gap-1.5">
+<button class="text-secondary-fixed-dim hover:text-secondary-fixed transition-colors flex items-center" id="copyBtn" title="نسخ رقم الطلب" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+<span class="font-headline font-bold text-secondary-fixed tracking-wide" id="orderIdText" style="font-variant-numeric: tabular-nums;">#KF-2026-0924-012</span>
+</div>
+</div>
+<!-- Row 2: Service Scheduled Slot -->
+<div class="flex items-center justify-between py-1.5 px-2 rounded-lg bg-primary-container/40">
+<span class="font-body font-medium text-surface-variant/80">الموعد</span>
+<div class="flex items-center gap-1 text-surface-bright font-semibold">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed-dim">schedule</span>
+<span class="">الاثنين 24 سبتمبر — 9:00 ص</span>
+</div>
+</div>
+<!-- Row 3: Quality Guarantee Micro-badge -->
+<div class="flex items-center justify-between pt-1 text-[11px] text-surface-container-high/80 px-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary-fixed">shield</span>
+            ضمان رضاك 30 يوماً على الصيانة
+          </span>
+<span class="text-secondary-fixed-dim font-medium">فني موثّق ١٠٠٪</span>
+</div>
+</div>
+</div>
+<!-- Quick Feedback / Delight Toast Pill (Hidden initially) -->
+<div class="opacity-0 pointer-events-none transition-opacity duration-300 fixed bottom-28 z-50 bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-1.5" id="toastMessage">
+<span class="material-symbols-outlined text-sm">done</span>
+<span class="">تم نسخ رقم الطلب إلى الحافظة</span>
+</div>
+<!-- Action Center (CTAs) -->
+<div class="w-full max-w-[350px] sm:max-w-[390px] flex flex-col gap-2.5 mt-5">
+<!-- Primary Action CTA -->
+<button class="w-full h-[52px] rounded-xl bg-gradient-to-l from-secondary via-secondary-container to-secondary-fixed text-on-secondary-fixed font-headline font-bold text-[15px] shadow-lg shadow-secondary/25 hover:shadow-secondary/40 active:scale-[0.98] transition-all flex items-center justify-between px-5" id="trackOrderBtn" type="button">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">radar</span>
+<span class="">متابعة حالة الطلب والفني</span>
+</span>
+<span class="material-symbols-outlined text-[18px] transform rotate-180">arrow_forward</span>
+</button>
+<!-- Secondary Action CTA -->
+<button class="w-full h-[46px] rounded-xl bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 active:scale-[0.98] text-secondary-fixed font-headline font-semibold text-[14px] transition-all flex items-center justify-center gap-2 backdrop-blur-md" id="homeBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="">العودة للرئيسية</span>
+</button>
+</div>
+<!-- Bottom Reassurance Microcopy -->
+<div class="w-full text-center mt-4">
+<p class="font-body text-[11.5px] leading-normal text-outline-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary-fixed">sms</span>
+<span class="">وصلتك رسالة نصية بالرابط، وفريقنا معك في كل خطوة.</span>
+</p>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Copy functionality
+    const copyBtn = document.getElementById('copyBtn');
+    const orderIdText = document.getElementById('orderIdText');
+    const toastMessage = document.getElementById('toastMessage');
+
+    if (copyBtn && orderIdText && toastMessage) {
+      copyBtn.addEventListener('click', function() {
+        const text = orderIdText.innerText.trim();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(showToast).catch(() => fallbackCopy(text));
+        } else {
+          fallbackCopy(text);
+        }
+      });
+    }
+
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast();
+      } catch (e) {}
+      document.body.removeChild(textarea);
+    }
+
+    function showToast() {
+      toastMessage.classList.remove('opacity-0', 'pointer-events-none');
+      toastMessage.classList.add('opacity-100');
+      setTimeout(function() {
+        toastMessage.classList.remove('opacity-100');
+        toastMessage.classList.add('opacity-0', 'pointer-events-none');
+      }, 2200);
+    }
+
+    // Dynamic Celebration Confetti Generator
+    const confettiContainer = document.getElementById('confetti-container');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (confettiContainer && !prefersReducedMotion) {
+      const luxuryColors = ['#C7A35C', '#FFE082', '#5C1A6B', '#d2bcfa', '#ffd88d', '#ffffff'];
+      const shapes = ['star', 'rect', 'circle', 'sparkle'];
+
+      function spawnParticle(isBurst) {
+        const particle = document.createElement('div');
+        particle.className = 'confetti-particle pointer-events-none';
+        
+        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+        const color = luxuryColors[Math.floor(Math.random() * luxuryColors.length)];
+        const size = Math.random() * 8 + 5;
+        const startX = isBurst 
+          ? (40 + Math.random() * 20) 
+          : (Math.random() * 100);
+        const duration = isBurst 
+          ? (Math.random() * 2.2 + 2.8) 
+          : (Math.random() * 3.5 + 4.5);
+        const delay = isBurst ? Math.random() * 0.8 : 0;
+
+        particle.style.position = 'absolute';
+        particle.style.left = startX + 'vw';
+        particle.style.top = isBurst ? (20 + Math.random() * 15) + 'vh' : '-20px';
+        particle.style.width = size + 'px';
+        particle.style.height = (shape === 'rect' ? size * 1.6 : size) + 'px';
+        particle.style.opacity = '0';
+        particle.style.zIndex = '20';
+        particle.style.animation = `confettiRain ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s forwards`;
+
+        if (shape === 'circle') {
+          particle.style.backgroundColor = color;
+          particle.style.borderRadius = '50%';
+          particle.style.boxShadow = `0 0 8px ${color}66`;
+        } else if (shape === 'sparkle' || shape === 'star') {
+          particle.innerText = '✦';
+          particle.style.color = color;
+          particle.style.fontSize = (size * 1.5) + 'px';
+          particle.style.lineHeight = '1';
+          particle.style.textShadow = `0 0 6px ${color}`;
+        } else {
+          particle.style.backgroundColor = color;
+          particle.style.borderRadius = '2px';
+          particle.style.boxShadow = `0 0 6px ${color}44`;
+        }
+
+        confettiContainer.appendChild(particle);
+
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, (duration + delay) * 1000 + 300);
+      }
+
+      // Initial Burst
+      for (let i = 0; i < 38; i++) {
+        spawnParticle(true);
+      }
+
+      // Continuous gentle celebratory drift
+      let streamInterval = setInterval(() => {
+        if (document.hidden) return;
+        spawnParticle(false);
+      }, 340);
+
+      // Clean stream interval after 25s to preserve performance
+      setTimeout(() => {
+        clearInterval(streamInterval);
+      }, 25000);
+    }
+  })();
+</script></main>
+<script src="/kafook-app.js?v=20261005X"></script>
+<script>
+(function(){
+  try {
+    var orders = JSON.parse(localStorage.getItem('kafook_my_orders') || '[]');
+    if (!orders.length) return;
+    var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    if (page === 'track.html' || page === 'order-status.html') return;
+    var btn = document.createElement('a');
+    btn.href = '/track.html';
+    btn.style.cssText = 'position:fixed;top:76px;left:16px;z-index:40;background:#5C1A6B;color:white;padding:8px 14px;border-radius:999px;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(92,26,107,0.3);';
+    btn.innerHTML = '📋 طلباتي (' + orders.length + ')';
+    document.body.appendChild(btn);
+  } catch(e){}
+})();
+</script>
+<script src="/pwa-install.js" defer></script>
+</body></html>

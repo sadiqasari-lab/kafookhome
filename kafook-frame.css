@@ -1,0 +1,32 @@
+/*
+ * Desktop frame: every page is the same 440px phone column as the home page, on its dark
+ * backdrop. Before this, most pages (services, service pages, success) stretched to the full
+ * screen width. The fixed top header and bottom nav follow the column; full-screen overlays
+ * (inset-0: payment modal, confetti, notices) stay full-screen. Phones are not affected.
+ * Loaded in <head> so the first paint is already narrow.
+ */
+@media (min-width: 600px) {
+  html { background: #24062c; }
+  body {
+    max-width: 440px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    min-height: 100vh;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 20px 60px rgba(0, 0, 0, 0.45);
+  }
+  /* bars already centred with left-1/2 + -translate-x-1/2 keep their own centring */
+  header.fixed:not(.\-translate-x-1\/2),
+  nav.fixed:not(.\-translate-x-1\/2),
+  .fixed.w-full:not(.\-translate-x-1\/2),
+  .fixed.inset-x-0:not(.\-translate-x-1\/2) {
+    left: calc(50% - 220px) !important;
+    right: calc(50% - 220px) !important;
+    width: auto !important;
+    max-width: 440px;
+  }
+  /* floating «طلباتي» (inline left:16px of the screen) sits in the column's corner */
+  a[href="/track.html"][style*="fixed"] { left: calc(50% - 220px + 16px) !important; }
+}
+
+/* decorative shapes pushed some pages sideways on phones; clip keeps sticky bars working */
+html, body { overflow-x: clip; }

@@ -1,0 +1,791 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"><meta content="mobile_blank" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed-dim": "#d2bcfa", "surface-bright": "#fff7ff", "tertiary-fixed-dim": "#d2beed", "on-primary-fixed": "#231043", "surface-container": "#f6e9ff", "outline": "#7a757f", "on-error": "#ffffff", "inverse-primary": "#d2bcfa", "primary-container": "#2d1b4e", "secondary-container": "#ffd88d", "secondary-fixed-dim": "#e8c178", "secondary": "#775a1b", "on-surface-variant": "#49454e", "on-secondary": "#ffffff", "primary": "#170338", "surface-container-high": "#f2e3ff", "outline-variant": "#cbc4d0", "background": "#fff7ff", "on-secondary-fixed": "#261900", "on-tertiary-fixed": "#221438", "error": "#ba1a1a", "on-primary-container": "#9783bd", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#4f3d72", "on-tertiary": "#ffffff", "surface-container-highest": "#ecddfa", "surface": "#fff7ff", "surface-dim": "#e4d4f2", "on-error-container": "#93000a", "on-tertiary-fixed-variant": "#4f4066", "on-primary": "#ffffff", "error-container": "#ffdad6", "on-tertiary-container": "#9685b0", "secondary-fixed": "#ffdea3", "on-surface": "#20172c", "primary-fixed": "#ebddff", "on-background": "#20172c", "tertiary-fixed": "#ecdcff", "tertiary": "#16082c", "inverse-on-surface": "#f8edff", "surface-container-low": "#faf0ff", "surface-variant": "#ecddfa", "on-secondary-fixed-variant": "#5c4203", "surface-tint": "#68558b", "inverse-surface": "#362c42", "tertiary-container": "#2c1e42", "on-secondary-container": "#795c1d" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, fontFamily: { "headline": ["Plus Jakarta Sans", "sans-serif"], "display": ["Plus Jakarta Sans", "sans-serif"], "body": ["IBM Plex Sans", "sans-serif"], "label": ["IBM Plex Sans", "sans-serif"] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+<link rel="stylesheet" href="/kafook-frame.css?v=20261024D">
+</head><body class="bg-gradient-to-b from-primary via-primary-container to-tertiary text-on-primary font-body antialiased flex flex-col min-h-screen selection:bg-secondary selection:text-on-secondary"><main class="flex-1 flex flex-col relative w-full pt-11 pb-safe"><div class="flex flex-col w-full relative min-h-[812px] overflow-hidden select-none font-headline" dir="rtl">
+<!-- DIMMED BACKGROUND LAYER (Kafook Deep Cleaning Screen Behind Modal) -->
+<div class="absolute inset-0 bg-primary-container z-0 pointer-events-none opacity-40">
+<div class="p-5 flex flex-col gap-4 filter blur-[3px]">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-full bg-surface-container-high/20"></div>
+<div class="h-5 w-24 bg-surface-container-high/30 rounded-full"></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high/20"></div>
+</div>
+<div class="h-44 w-full rounded-2xl bg-surface-container-highest/20 mt-3 p-4 flex flex-col justify-end">
+<div class="h-6 w-36 bg-secondary-container/40 rounded-md mb-2"></div>
+<div class="h-3 w-48 bg-surface-container-low/40 rounded-md"></div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="h-28 rounded-xl bg-surface-container-high/20"></div>
+<div class="h-28 rounded-xl bg-surface-container-high/20"></div>
+</div>
+</div>
+</div>
+<!-- BACKDROP OVERLAY WITH VIGNETTE & BLUR -->
+<div class="absolute inset-0 bg-tertiary/75 backdrop-blur-[6px] z-10"></div>
+<!-- BOTTOM SHEET MODAL CONTAINER -->
+<div class="relative z-20 mt-auto w-full sm:max-w-[440px] mx-auto bg-surface-bright rounded-t-[28px] shadow-[0_-12px_40px_rgba(23,3,56,0.45)] flex flex-col overflow-hidden">
+<!-- Top Decorative Gold Accent Bar -->
+<div class="w-full h-[3px] bg-gradient-to-r from-transparent via-secondary-container to-transparent opacity-90"></div>
+<!-- Drag Handle & Modal Header -->
+<div class="pt-3 px-5 pb-3 bg-surface-bright flex flex-col gap-2">
+<!-- Drag pill -->
+<div class="flex justify-center items-center py-1">
+<div class="w-10 h-1.5 rounded-full bg-secondary/35 shadow-inner"></div>
+</div>
+<!-- Main Header Row -->
+<div class="flex items-center justify-between mt-1">
+<!-- Right: Icon & Title -->
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &quot;FILL&quot; 1;">chair_alt</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h2 class="text-[19px] font-bold text-primary leading-tight font-headline">باقة ستوديو</h2>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-secondary-container/50 text-secondary font-bold">مثالية للاستوديو</span>
+</div>
+<p class="text-xs text-on-surface-variant font-label mt-0.5">تشمل غرفة، ركن مطبخ، وحمام</p>
+</div>
+</div>
+<!-- Left: Price Badge & Close Button -->
+<div class="flex items-center gap-2">
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high text-secondary text-xs font-bold font-headline shadow-sm flex items-center gap-1">
+<span class="text-[10px] text-on-surface-variant font-normal">سعر الباقة</span>
+<span class="">250 ر.س</span>
+</div>
+<button aria-label="إغلاق النافذة" onclick="location.href='/bundles.html'" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Feature Highlight Strip -->
+<div class="mt-2.5 p-3 rounded-xl bg-surface-container flex items-start gap-2.5 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5 shrink-0" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
+<div class="text-[11.5px] leading-relaxed text-secondary font-medium">
+<strong class="font-bold text-on-secondary-container">السعر الأساسي 250 ر.س:</strong> يشمل غرفة، ركن مطبخ، وحمام (تنظيف الأرضيات، الحوائط، الشبابيك، والأسطح). أي إضافات تُحسب على هذا السعر.
+        </div>
+</div>
+</div>
+<!-- Scrollable Add-ons Section -->
+<div class="px-4 py-2 flex flex-col gap-2.5 max-h-[380px] overflow-y-auto overscroll-contain">
+<!-- ADD-ON 1: Rooms -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">bed</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary truncate">غرف إضافية</span>
+<span class="text-[11px] text-on-surface-variant font-label">150 ر.س / غرفة</span>
+<span class="text-[10px] text-on-surface-variant/80 font-label leading-snug mt-0.5">شاملة تنظيف الأسطح مع الأرضيات والحائط والشباك.</span>
+</div>
+</div>
+<!-- Quantity Selector -->
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustCount('rooms', -1, 150)" type="button">
+<span class="material-symbols-outlined text-[14px]">remove</span>
+</button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-rooms">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustCount('rooms', 1, 150)" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+</div>
+<!-- ADD-ON 2: Kitchens -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">skillet</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary truncate">مطابخ إضافية</span>
+<span class="text-[11px] text-on-surface-variant font-label">400 ر.س / مطبخ</span>
+<span class="text-[10px] text-on-surface-variant/80 font-label leading-snug mt-0.5">شامل تنظيف وإزالة الدهون من الأرضيات، الحائط، الشباك، الأفران، المغسلة، والدواليب. لتنظيف الدواليب من الداخل، يرجى إفراغها من جميع الأغراض قبل وصول الفريق. لا تشمل الخدمة غسل الصحون والأواني.</span>
+</div>
+</div>
+<!-- Quantity Selector -->
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustCount('kitchens', -1, 400)" type="button">
+<span class="material-symbols-outlined text-[14px]">remove</span>
+</button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-kitchens">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustCount('kitchens', 1, 400)" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+</div>
+<!-- ADD-ON 3: Sofa Seats (Default Active +1) -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-between bg-gradient-to-l from-surface-container-low/40 to-surface-container-lowest">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-secondary-container/40 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">chair</span>
+</div>
+<div class="flex flex-col truncate">
+<div class="flex items-center gap-1.5">
+<span class="text-[13.5px] font-bold text-primary truncate">مقاعد كنب إضافية</span>
+
+</div>
+<span class="text-[11px] text-secondary font-medium font-label">40 ر.س / مقعد</span>
+</div>
+</div>
+<!-- Quantity Selector -->
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustCount('sofas', -1, 40)" type="button">
+<span class="material-symbols-outlined text-[14px]">remove</span>
+</button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-sofas">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustCount('sofas', 1, 40)" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+</div>
+<!-- ADD-ON 4: Bathrooms -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">shower</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary truncate">حمامات إضافية</span>
+<span class="text-[11px] text-on-surface-variant font-label">100 ر.س / حمام</span>
+<span class="text-[10px] text-on-surface-variant/80 font-label leading-snug mt-0.5">شامل تنظيف السخان، الشفاط، التواليت، المغسلة، الشباك، الحائط، والأرضيات.</span>
+</div>
+</div>
+<!-- Quantity Selector -->
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustCount('baths', -1, 100)" type="button">
+<span class="material-symbols-outlined text-[14px]">remove</span>
+</button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-baths">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustCount('baths', 1, 100)" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+</div>
+<!-- ADD-ON 5: Carpets / Rugs (Slider) -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">texture</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary block leading-none">غسيل سجاد بالبخار</span>
+<span class="text-[11px] text-on-surface-variant font-label mt-1 inline-block">10 ر.س / م²</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center bg-surface-container-low rounded-full p-0.5 shadow-xs">
+<button class="w-6 h-6 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary font-bold text-xs active:scale-90 transition-transform" onclick="adjustCarpetQty(-1)" type="button">−</button>
+<span class="w-7 text-center font-headline font-bold text-xs text-primary tabular-nums" id="carpet-qty">0</span>
+<button class="w-6 h-6 rounded-full flex items-center justify-center bg-primary text-on-primary font-bold text-xs active:scale-90 transition-transform" onclick="adjustCarpetQty(1)" type="button">+</button>
+</div>
+</div>
+</div>
+<div dir="rtl" class="pt-2">
+<input type="range" min="1" max="500" value="1" step="1" id="carpet-slider" oninput="setCarpetM2(parseInt(this.value))" class="w-full h-2 appearance-none rounded-full bg-surface-container accent-primary cursor-pointer" style="direction:rtl;">
+<div class="flex items-center justify-between mt-2">
+<span class="font-body text-[10px] text-on-surface-variant">1</span>
+<input type="number" id="carpet-m2" value="" min="0" max="500" inputmode="numeric" pattern="[0-9]*" placeholder="غير محدد" oninput="setCarpetM2FromInput(this.value)" onfocus="this.select()" class="w-24 text-center font-headline font-extrabold text-base text-primary tabular-nums placeholder:text-on-surface-variant placeholder:font-normal placeholder:text-sm bg-surface-container-low rounded-lg px-2 py-1 border border-outline-variant/30 focus:border-secondary outline-none" style="-moz-appearance:textfield;">
+<span class="font-body text-[10px] text-on-surface-variant">500</span>
+</div>
+<p class="font-headline font-bold text-xs text-primary mt-2" id="carpet-summary">لم يتم تحديد المساحة</p>
+<div class="mt-2.5 p-2.5 rounded-lg bg-surface-container-low/70 flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[14px] shrink-0 mt-0.5" style="font-variation-settings: &quot;FILL&quot; 1;">info</span>
+<p class="font-body text-[11px] text-on-surface-variant leading-relaxed">شامل التنظيف العميق بالبخار للسجاد، ويُحتسب السعر حسب المساحة المحددة بالمتر المربع.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- EXTRA: المخدات والوسائد -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">bed</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">المخدات والوسائد</span>
+<span class="text-[11px] text-on-surface-variant font-label">25 ر.س / قطعة</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="updateExtraCount('pillows', -1)" type="button"><span class="material-symbols-outlined text-[14px]">remove</span></button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-pillows">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="updateExtraCount('pillows', 1)" type="button"><span class="material-symbols-outlined text-[14px] font-bold">add</span></button>
+</div>
+</div>
+<div class="mt-2.5 p-2.5 rounded-lg bg-surface-container-low/70 flex items-start gap-2"><span class="material-symbols-outlined text-secondary text-[14px] shrink-0 mt-0.5" style="font-variation-settings: &quot;FILL&quot; 1;">info</span><p class="font-body text-[11px] text-on-surface-variant leading-relaxed">شامل تنظيف وتعقيم الوسادة الواحدة.</p></div>
+</div>
+<!-- EXTRA: مرتبة مفردة -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">single_bed</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">مرتبة مفردة</span>
+<span class="text-[11px] text-on-surface-variant font-label">96 ر.س / مرتبة</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="updateExtraCount('mattressSingle', -1)" type="button"><span class="material-symbols-outlined text-[14px]">remove</span></button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-mattressSingle">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="updateExtraCount('mattressSingle', 1)" type="button"><span class="material-symbols-outlined text-[14px] font-bold">add</span></button>
+</div>
+</div>
+<div class="mt-2.5 p-2.5 rounded-lg bg-surface-container-low/70 flex items-start gap-2"><span class="material-symbols-outlined text-secondary text-[14px] shrink-0 mt-0.5" style="font-variation-settings: &quot;FILL&quot; 1;">info</span><p class="font-body text-[11px] text-on-surface-variant leading-relaxed">شامل تنظيف مرتبة مفردة واحدة فقط.</p></div>
+</div>
+<!-- EXTRA: مرتبة كينج -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">king_bed</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">مرتبة كينج</span>
+<span class="text-[11px] text-on-surface-variant font-label">196 ر.س / مرتبة</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="updateExtraCount('mattressKing', -1)" type="button"><span class="material-symbols-outlined text-[14px]">remove</span></button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-mattressKing">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="updateExtraCount('mattressKing', 1)" type="button"><span class="material-symbols-outlined text-[14px] font-bold">add</span></button>
+</div>
+</div>
+<div class="mt-2.5 p-2.5 rounded-lg bg-surface-container-low/70 flex items-start gap-2"><span class="material-symbols-outlined text-secondary text-[14px] shrink-0 mt-0.5" style="font-variation-settings: &quot;FILL&quot; 1;">info</span><p class="font-body text-[11px] text-on-surface-variant leading-relaxed">شامل تنظيف مرتبة كينج واحدة فقط.</p></div>
+</div>
+<!-- EXTRA: تنظيف الستائر -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">curtains</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">تنظيف الستائر</span>
+<span class="text-[11px] text-on-surface-variant font-label">50 ر.س / م²</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustExtraQty('curtains', -1)" type="button"><span class="material-symbols-outlined text-[14px]">remove</span></button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-curtains">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustExtraQty('curtains', 1)" type="button"><span class="material-symbols-outlined text-[14px] font-bold">add</span></button>
+</div>
+</div>
+<div dir="rtl" class="pt-2">
+<input type="range" min="1" max="500" value="1" step="1" id="slider-curtains" oninput="setExtraM2('curtains', parseInt(this.value))" class="w-full h-2 appearance-none rounded-full bg-surface-container accent-primary cursor-pointer" style="direction:rtl;">
+<div class="flex items-center justify-between mt-2">
+<span class="font-body text-[10px] text-on-surface-variant">1</span>
+<input type="number" id="m2-curtains" value="" min="0" max="500" inputmode="numeric" pattern="[0-9]*" placeholder="غير محدد" oninput="setExtraM2FromInput('curtains', this.value)" onfocus="this.select()" class="w-24 text-center font-headline font-extrabold text-base text-primary tabular-nums placeholder:text-on-surface-variant placeholder:font-normal placeholder:text-sm bg-surface-container-low rounded-lg px-2 py-1 border border-outline-variant/30 focus:border-secondary outline-none" style="-moz-appearance:textfield;">
+<span class="font-body text-[10px] text-on-surface-variant">500</span>
+</div>
+<p class="font-headline font-bold text-xs text-primary mt-2" id="price-curtains">لم يتم تحديد المساحة</p>
+</div>
+</div>
+<!-- EXTRA: مجلس خارجي -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">deck</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">مجلس خارجي</span>
+<span class="text-[11px] text-on-surface-variant font-label">25 ر.س / م²</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustExtraQty('outdoor', -1)" type="button"><span class="material-symbols-outlined text-[14px]">remove</span></button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-outdoor">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustExtraQty('outdoor', 1)" type="button"><span class="material-symbols-outlined text-[14px] font-bold">add</span></button>
+</div>
+</div>
+<div dir="rtl" class="pt-2">
+<input type="range" min="1" max="500" value="1" step="1" id="slider-outdoor" oninput="setExtraM2('outdoor', parseInt(this.value))" class="w-full h-2 appearance-none rounded-full bg-surface-container accent-primary cursor-pointer" style="direction:rtl;">
+<div class="flex items-center justify-between mt-2">
+<span class="font-body text-[10px] text-on-surface-variant">1</span>
+<input type="number" id="m2-outdoor" value="" min="0" max="500" inputmode="numeric" pattern="[0-9]*" placeholder="غير محدد" oninput="setExtraM2FromInput('outdoor', this.value)" onfocus="this.select()" class="w-24 text-center font-headline font-extrabold text-base text-primary tabular-nums placeholder:text-on-surface-variant placeholder:font-normal placeholder:text-sm bg-surface-container-low rounded-lg px-2 py-1 border border-outline-variant/30 focus:border-secondary outline-none" style="-moz-appearance:textfield;">
+<span class="font-body text-[10px] text-on-surface-variant">500</span>
+</div>
+<p class="font-headline font-bold text-xs text-primary mt-2" id="price-outdoor">لم يتم تحديد المساحة</p>
+</div>
+</div>
+<!-- EXTRA: تنظيف الخزان الأرضي -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">water_drop</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">تنظيف الخزان الأرضي</span>
+<span class="text-[11px] text-on-surface-variant font-label">50 ر.س / م²</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-2 py-1 rounded-full shadow-inner shrink-0">
+<button class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary active:scale-95 shadow-xs transition-transform" onclick="adjustExtraQty('groundTank', -1)" type="button"><span class="material-symbols-outlined text-[14px]">remove</span></button>
+<span class="w-5 text-center text-xs font-bold text-primary font-headline" id="qty-groundTank">0</span>
+<button class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 shadow-xs transition-transform" onclick="adjustExtraQty('groundTank', 1)" type="button"><span class="material-symbols-outlined text-[14px] font-bold">add</span></button>
+</div>
+</div>
+<div dir="rtl" class="pt-2">
+<input type="range" min="1" max="500" value="1" step="1" id="slider-groundTank" oninput="setExtraM2('groundTank', parseInt(this.value))" class="w-full h-2 appearance-none rounded-full bg-surface-container accent-primary cursor-pointer" style="direction:rtl;">
+<div class="flex items-center justify-between mt-2">
+<span class="font-body text-[10px] text-on-surface-variant">1</span>
+<input type="number" id="m2-groundTank" value="" min="0" max="500" inputmode="numeric" pattern="[0-9]*" placeholder="غير محدد" oninput="setExtraM2FromInput('groundTank', this.value)" onfocus="this.select()" class="w-24 text-center font-headline font-extrabold text-base text-primary tabular-nums placeholder:text-on-surface-variant placeholder:font-normal placeholder:text-sm bg-surface-container-low rounded-lg px-2 py-1 border border-outline-variant/30 focus:border-secondary outline-none" style="-moz-appearance:textfield;">
+<span class="font-body text-[10px] text-on-surface-variant">500</span>
+</div>
+<p class="font-headline font-bold text-xs text-primary mt-2" id="price-groundTank">لم يتم تحديد المساحة</p>
+</div>
+</div>
+<!-- EXTRA: تنظيف بالمتر المربع -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">grid_on</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13.5px] font-bold text-primary">تنظيف بالمتر المربع</span>
+<span class="text-[11px] text-on-surface-variant font-label">25 ر.س / م²</span>
+</div>
+</div>
+
+</div>
+<div dir="rtl" class="pt-2">
+<input type="range" min="1" max="5000" value="1" step="1" id="slider-areaClean" oninput="setExtraM2('areaClean', parseInt(this.value))" class="w-full h-2 appearance-none rounded-full bg-surface-container accent-primary cursor-pointer" style="direction:rtl;">
+<div class="flex items-center justify-between mt-2">
+<span class="font-body text-[10px] text-on-surface-variant">1</span>
+<input type="number" id="m2-areaClean" value="" min="0" max="5000" inputmode="numeric" pattern="[0-9]*" placeholder="غير محدد" oninput="setExtraM2FromInput('areaClean', this.value)" onfocus="this.select()" class="w-24 text-center font-headline font-extrabold text-base text-primary tabular-nums placeholder:text-on-surface-variant placeholder:font-normal placeholder:text-sm bg-surface-container-low rounded-lg px-2 py-1 border border-outline-variant/30 focus:border-secondary outline-none" style="-moz-appearance:textfield;">
+<span class="font-body text-[10px] text-on-surface-variant">5000</span>
+</div>
+<p class="font-headline font-bold text-xs text-primary mt-2" id="price-areaClean">لم يتم تحديد المساحة</p>
+</div>
+</div>
+<!-- STICKY BOTTOM CHECKOUT SUMMARY -->
+<div class="p-4 bg-surface-bright/95 backdrop-blur-md shadow-2xl flex flex-col gap-2 mt-2">
+<div class="flex items-center justify-between gap-3">
+<!-- Total Column -->
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant font-medium font-label">الإجمالي المتوقع</span>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-black text-secondary font-headline tracking-tight" id="grand-total">250</span>
+<span class="text-xs font-bold text-primary font-headline">ر.س</span>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="flex-1 py-3 px-5 rounded-2xl bg-gradient-to-l from-primary via-primary-container to-tertiary text-on-primary font-bold text-[14.5px] shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="button">
+<span class="">أضف للطلب والجدولة</span>
+<span class="material-symbols-outlined text-[18px] text-secondary-container">arrow_back</span>
+</button>
+</div>
+<!-- Trust Microcopy Footer -->
+<div class="flex items-center justify-center gap-1.5 text-[10.5px] text-on-surface-variant py-0.5">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: &quot;FILL&quot; 1;">verified_user</span>
+<span class="">&nbsp;تعديل الكميات متاح حتى وصول كابتن التنظيف</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Bundle model: 1 room (100) + 1 kitchen (250) + 1 bath (85) + 2 sofa seats (80) + medium carpet (125) = 640 SAR
+  // No separate base charge. Floor cleaning is bundled into the item prices.
+  let basePrice = 250;
+  let items = {
+    rooms: { count: 0, price: 150 },
+    kitchens: { count: 0, price: 400 },
+    sofas: { count: 0, price: 40 },
+    baths: { count: 0, price: 100 }
+  };
+  let carpetM2 = 0;
+  let carpetQty = 0;
+  let extras = {
+    pillows: { count: 0, price: 25 },
+    mattressSingle: { count: 0, price: 96 },
+    mattressKing: { count: 0, price: 196 },
+    curtains: { m2: 0, qty: 0, rate: 50 },
+    outdoor: { m2: 0, qty: 0, rate: 25 },
+    groundTank: { m2: 0, qty: 0, rate: 50 },
+    areaClean: { m2: 0, rate: 25 }
+  };
+
+  function updateTotal() {
+    let total = basePrice;
+    for (let k in items) {
+      total += items[k].count * items[k].price;
+    }
+    total += carpetM2 * carpetQty * 10;
+    total += extras.pillows.count * extras.pillows.price;
+    total += extras.mattressSingle.count * extras.mattressSingle.price;
+    total += extras.mattressKing.count * extras.mattressKing.price;
+    total += extras.curtains.m2 * extras.curtains.qty * extras.curtains.rate;
+    total += extras.outdoor.m2 * extras.outdoor.qty * extras.outdoor.rate;
+    total += extras.groundTank.m2 * extras.groundTank.qty * extras.groundTank.rate;
+    total += extras.areaClean.m2 * extras.areaClean.rate;
+    const totalEl = document.getElementById('grand-total');
+    if (totalEl) {
+      totalEl.textContent = total.toLocaleString('en-US');
+    }
+    var cSummary = document.getElementById('carpet-summary');
+    if (cSummary) {
+      if (carpetM2 > 0 && carpetQty > 0) {
+        cSummary.textContent = carpetQty + ' × ' + carpetM2 + ' م² × 10 ر.س = ' + (carpetQty * carpetM2 * 10).toLocaleString('en-US') + ' ر.س';
+      } else if (carpetM2 > 0 && carpetQty <= 0) {
+        cSummary.textContent = 'حدد الكمية للحساب';
+      } else {
+        cSummary.textContent = 'لم يتم تحديد المساحة';
+      }
+    }
+  }
+
+  function adjustCount(itemKey, delta, price) {
+    if (!items[itemKey]) {
+      items[itemKey] = { count: 0, price: price };
+    }
+    let newCount = items[itemKey].count + delta;
+    if (newCount < 0) newCount = 0;
+    items[itemKey].count = newCount;
+    const qtySpan = document.getElementById('qty-' + itemKey);
+    if (qtySpan) {
+      qtySpan.textContent = newCount;
+    }
+    updateTotal();
+  }
+
+  function setCarpetM2(value) {
+    carpetM2 = value;
+    var inp = document.getElementById('carpet-m2');
+    if (inp) inp.value = value || '';
+    if (value > 0 && carpetQty === 0) {
+      carpetQty = 1;
+      var qel = document.getElementById('carpet-qty');
+      if (qel) qel.textContent = '1';
+    }
+    updateTotal();
+  }
+
+  function setCarpetM2FromInput(raw) {
+    if (raw === '' || raw === null || raw === undefined) {
+      carpetM2 = 0;
+      var slider0 = document.getElementById('carpet-slider');
+      if (slider0) slider0.value = slider0.min;
+      updateTotal();
+      return;
+    }
+    var v = parseInt(raw, 10);
+    if (isNaN(v) || v < 0) v = 0;
+    var slider = document.getElementById('carpet-slider');
+    var max = slider ? parseInt(slider.max, 10) : 500;
+    if (v > max) {
+      v = max;
+      var inp = document.getElementById('carpet-m2');
+      if (inp) inp.value = v;
+    }
+    carpetM2 = v;
+    if (slider && v >= 1) slider.value = v;
+    if (v > 0 && carpetQty === 0) {
+      carpetQty = 1;
+      var qel = document.getElementById('carpet-qty');
+      if (qel) qel.textContent = '1';
+    }
+    updateTotal();
+  }
+
+  function adjustCarpetQty(delta) {
+    carpetQty = Math.max(0, carpetQty + delta);
+    var el = document.getElementById('carpet-qty');
+    if (el) el.textContent = carpetQty;
+    updateTotal();
+  }
+
+
+  function updateExtraCount(key, delta) {
+    extras[key].count = Math.max(0, extras[key].count + delta);
+    var el = document.getElementById('qty-' + key);
+    if (el) el.textContent = extras[key].count;
+    updateTotal();
+  }
+
+  function setExtraM2(service, value) {
+    extras[service].m2 = value;
+    var inp = document.getElementById('m2-' + service);
+    if (inp) inp.value = value || '';
+    if (value > 0 && extras[service].qty === 0 && service !== 'areaClean') {
+      extras[service].qty = 1;
+      var qel = document.getElementById('qty-' + service);
+      if (qel) qel.textContent = '1';
+    }
+    updateExtraPriceLine(service);
+    updateTotal();
+  }
+
+  function setExtraM2FromInput(service, raw) {
+    if (raw === '' || raw === null || raw === undefined) {
+      extras[service].m2 = 0;
+      var slider0 = document.getElementById('slider-' + service);
+      if (slider0) slider0.value = slider0.min;
+      updateExtraPriceLine(service);
+      updateTotal();
+      return;
+    }
+    var v = parseInt(raw, 10);
+    if (isNaN(v) || v < 0) v = 0;
+    var slider = document.getElementById('slider-' + service);
+    var max = slider ? parseInt(slider.max, 10) : 9999;
+    if (v > max) { v = max; var inp = document.getElementById('m2-' + service); if (inp) inp.value = v; }
+    extras[service].m2 = v;
+    if (slider && v >= 1) slider.value = v;
+    if (v > 0 && extras[service].qty === 0 && service !== 'areaClean') {
+      extras[service].qty = 1;
+      var qel = document.getElementById('qty-' + service);
+      if (qel) qel.textContent = '1';
+    }
+    updateExtraPriceLine(service);
+    updateTotal();
+  }
+
+  function adjustExtraQty(service, delta) {
+    extras[service].qty = Math.max(0, extras[service].qty + delta);
+    var el = document.getElementById('qty-' + service);
+    if (el) el.textContent = extras[service].qty;
+    updateExtraPriceLine(service);
+    updateTotal();
+  }
+
+  function updateExtraPriceLine(service) {
+    var el = document.getElementById('price-' + service);
+    if (!el) return;
+    var rate = extras[service].rate;
+    var m2 = extras[service].m2 || 0;
+    var qty = extras[service].qty || 0;
+    if (service === 'areaClean') {
+      if (m2 <= 0) { el.textContent = 'لم يتم تحديد المساحة'; return; }
+      el.textContent = m2 + ' م² × ' + rate + ' ر.س = ' + (m2 * rate).toLocaleString('en-US') + ' ر.س';
+    } else {
+      if (m2 <= 0) { el.textContent = 'لم يتم تحديد المساحة'; return; }
+      if (qty <= 0) { el.textContent = 'حدد الكمية للحساب'; return; }
+      el.textContent = qty + ' × ' + m2 + ' م² × ' + rate + ' ر.س = ' + (qty * m2 * rate).toLocaleString('en-US') + ' ر.س';
+    }
+  }
+
+  window.__getApartmentConfig = function() {
+    return {
+      basePrice: basePrice,
+      rooms: items.rooms.count,
+      kitchens: items.kitchens.count,
+      baths: items.baths.count,
+      sofas: items.sofas.count,
+      carpetM2: carpetM2,
+      carpetQty: carpetQty,
+      carpetTotal: carpetM2 * carpetQty * 10,
+      pillows: extras.pillows.count,
+      mattressSingle: extras.mattressSingle.count,
+      mattressKing: extras.mattressKing.count,
+      curtainsM2: extras.curtains.m2,
+      curtainsQty: extras.curtains.qty,
+      outdoorM2: extras.outdoor.m2,
+      outdoorQty: extras.outdoor.qty,
+      groundTankM2: extras.groundTank.m2,
+      groundTankQty: extras.groundTank.qty,
+      areaCleanM2: extras.areaClean.m2
+    };
+  };
+
+  // Home profile integration (Batch 11B)
+  window.__applyHomeProfile = function(profile) {
+    if (!profile) return;
+    if (profile.rooms != null) { items.rooms.count = profile.rooms; var e1 = document.getElementById('qty-rooms'); if (e1) e1.textContent = profile.rooms; }
+    if (profile.kitchens != null) { items.kitchens.count = profile.kitchens; var e2 = document.getElementById('qty-kitchens'); if (e2) e2.textContent = profile.kitchens; }
+    if (profile.baths != null) { items.baths.count = profile.baths; var e3 = document.getElementById('qty-baths'); if (e3) e3.textContent = profile.baths; }
+    if (profile.sofaSeats != null) { items.sofas.count = profile.sofaSeats; var eSofa = document.getElementById('qty-sofas'); if (eSofa) eSofa.textContent = profile.sofaSeats; }
+    updateTotal();
+  };
+</script></main>
+
+<script src="/kafook-app.js?v=20261030A"></script>
+<script>
+(function(){
+  try {
+    var orders = JSON.parse(localStorage.getItem('kafook_my_orders') || '[]');
+    if (!orders.length) return;
+    var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    // only where it helps (home, success): on the booking steps it covered the step counter, back and close buttons
+    if (page !== 'index.html' && page !== '' && page !== 'success.html') return;
+    var btn = document.createElement('a');
+    btn.href = '/track.html';
+    btn.style.cssText = 'position:fixed;top:76px;left:16px;z-index:40;background:#5C1A6B;color:white;padding:8px 14px;border-radius:999px;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(92,26,107,0.3);';
+    btn.innerHTML = '📋 طلباتي (' + orders.length + ')';
+    document.body.appendChild(btn);
+  } catch(e){}
+})();
+</script>
+<script src="/pwa-install.js" defer></script>
+</body></html> 
+
+باقة فيلا 

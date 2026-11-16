@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>كفوك | طلباتي</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Cairo',sans-serif;background:#FAF5EE;background-image:radial-gradient(#c7a35c 1.2px,transparent 1.2px),radial-gradient(#5C1A6B 0.7px,#FAF5EE 0.7px);background-size:32px 32px;background-position:0 0,16px 16px;min-height:100vh;}
+.card{background:white;border-radius:20px;border:1px solid rgba(196,160,106,0.3);box-shadow:0 4px 20px rgba(45,27,78,0.05);}
+</style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+<link rel="stylesheet" href="/kafook-frame.css?v=20261024D">
+</head>
+<body class="p-4">
+<header class="flex items-center justify-between mb-5 sm:max-w-[440px] mx-auto">
+  <a href="/index.html" class="flex items-center gap-2">
+    <img src="/assets/kafook-logo.svg" alt="كفوك" class="h-8 w-auto">
+    <span class="text-lg font-bold text-[#5C1A6B]">كفوك</span>
+  </a>
+  <a href="/index.html" class="text-sm font-semibold text-[#5C1A6B]">← الرئيسية</a>
+</header>
+<main class="sm:max-w-[440px] mx-auto">
+  <h1 class="text-2xl font-black text-[#5C1A6B] mb-1">طلباتي</h1>
+  <p class="text-sm text-gray-600 mb-5">تابع حالة طلباتك مباشرة</p>
+  <div id="orders-list" class="space-y-3 mb-6"></div>
+  <div class="card p-4">
+    <h2 class="text-sm font-bold text-[#5C1A6B] mb-3">تتبع طلب برقم مرجعي</h2>
+    <input id="lookup-ref" type="text" placeholder="KF-A1B2C3D4" class="w-full bg-[#FAF7F2] border border-gray-200 rounded-xl py-3 px-4 text-sm mb-3" style="direction:ltr;text-align:center;font-weight:700;">
+    <input id="lookup-phone" type="tel" placeholder="05X XXX XXXX" class="w-full bg-[#FAF7F2] border border-gray-200 rounded-xl py-3 px-4 text-sm mb-3" style="direction:ltr;text-align:center;font-weight:700;">
+    <button onclick="lookupOrder()" class="w-full bg-gradient-to-r from-[#5C1A6B] to-[#430f50] text-white py-3 rounded-xl font-bold text-sm">ابحث عن الطلب</button>
+    <p id="lookup-error" class="text-xs text-red-500 mt-2 hidden"></p>
+  </div>
+</main>
+<script>
+function getSavedOrders() {
+  try { return JSON.parse(localStorage.getItem('kafook_my_orders') || '[]'); } catch(e) { return []; }
+}
+function renderOrders() {
+  var orders = getSavedOrders();
+  var container = document.getElementById('orders-list');
+  if (!orders.length) {
+    container.innerHTML = '<div class="card p-6 text-center"><p class="text-gray-500 text-sm">لا توجد طلبات محفوظة على هذا الجهاز</p></div>';
+    return;
+  }
+  container.innerHTML = orders.map(function(o) {
+    return '<a href="/order-status.html?ref=' + encodeURIComponent(o.ref) + '&phone=' + encodeURIComponent(o.phone || '') + '" class="card p-4 block">' +
+      '<div class="flex items-center justify-between mb-2">' +
+      '<span class="text-xs font-bold text-[#c7a35c]">' + o.ref + '</span>' +
+      '<span class="text-[10px] text-gray-400">' + (o.date || '') + '</span></div>' +
+      '<div class="text-sm font-bold text-[#5C1A6B] mb-1">' + (o.service || 'خدمة') + '</div>' +
+      '<div class="text-xs text-gray-500">' + (o.status === 'completed' ? 'مكتمل' : o.status === 'confirmed' ? 'مؤكد' : o.status === 'under_review' ? 'قيد المراجعة' : 'جديد') + '</div></a>';
+  }).join('');
+}
+function lookupOrder() {
+  var ref = document.getElementById('lookup-ref').value.trim().toUpperCase();
+  var phone = document.getElementById('lookup-phone').value.trim();
+  var err = document.getElementById('lookup-error');
+  err.classList.add('hidden');
+  if (!ref || !phone) {
+    err.textContent = 'الرجاء إدخال الرقم المرجعي ورقم الجوال';
+    err.classList.remove('hidden');
+    return;
+  }
+  window.location.href = '/order-status.html?ref=' + encodeURIComponent(ref) + '&phone=' + encodeURIComponent(phone);
+}
+renderOrders();
+</script>
+<script src="/kafook-app.js?v=20261030A"></script>
+<script src="/pwa-install.js" defer></script>
+</body>
+</html>

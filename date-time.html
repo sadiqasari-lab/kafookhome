@@ -1,0 +1,509 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>Kafook - Step 02/04 - متى نجيك؟</title>
+<!-- Tailwind CSS v3 with forms & container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cairo & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royal: {
+              DEFAULT: '#5C1A6B',
+              dark: '#42114e',
+              light: '#76228a',
+            },
+            gold: {
+              DEFAULT: '#b88928',
+              muted: '#cba358',
+              light: '#f7edd8',
+              border: '#ecd5aa',
+            },
+            sand: '#FAF5EE',
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="background-pattern">
+    /* Subtle luxury sparkle background dot grid matching Step 01 */
+    .kafook-bg {
+      background-color: #FAF5EE;
+      background-image: 
+        radial-gradient(#c7a35c 1.2px, transparent 1.2px), 
+        radial-gradient(#5C1A6B 0.7px, #FAF5EE 0.7px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+  </style>
+<style data-purpose="scrollbar-styling">
+    /* Custom compact scrollbar for time slot list */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1e7d8;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c39a48;
+      border-radius: 9999px;
+    }
+  </style>
+<!-- END: Custom Styles -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#5C1A6B">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كفوك">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+<style id="kafook-responsive">
+/* iOS safe-area: pads elements that are fixed at bottom */
+.kafook-safe-bottom,
+.fixed.bottom-0,
+.fixed.bottom-3,
+.fixed.bottom-4 {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Reduce font sizes on very narrow phones */
+@media (max-width: 380px) {
+  body { font-size: 14px; }
+  .text-xl, [class*="text-xl"] { font-size: 1.05rem !important; }
+}
+/* Prevent any horizontal overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+/* Ensure images never exceed their container */
+img, svg { max-width: 100%; }
+</style>
+
+<style id="kafook-fluid">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Fluid typography — scales smoothly from 320px to 1280px */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.75rem); line-height: 1.3; }
+h3 { font-size: clamp(1.1rem, 2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+
+/* Touch targets — WCAG minimum 44x44 */
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(.kafook-no-min), a.btn:not(.kafook-no-min) { min-height: 44px; }
+
+/* Images never exceed container */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Prevent horizontal scroll root cause */
+html, body { overflow-x: clip; }
+
+/* Support dynamic viewport height on modern devices */
+.min-h-app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* dvh fallback for older iOS — target fixed 844px heights */
+@media (max-height: 700px) {
+  [class*="min-h-[844"] { min-height: auto !important; }
+}
+</style>
+
+<style id="kafook-adaptive">
+/* iOS text scaling */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Dynamic viewport height with fallback */
+.min-h-app { min-height: 100vh; min-height: 100dvh; }
+
+/* Fluid typography — scales smoothly */
+h1 { font-size: clamp(1.5rem, 4vw + 1rem, 2.25rem); line-height: 1.25; }
+h2 { font-size: clamp(1.25rem, 3vw + 0.75rem, 1.6rem); line-height: 1.3; }
+
+/* Touch targets */
+button, a.btn, a[role="button"] { -webkit-tap-highlight-color: transparent; }
+
+/* Images never overflow */
+img, svg, video { max-width: 100%; height: auto; }
+
+/* Steps row — tighter on very narrow phones */
+@media (max-width: 360px) {
+  .step-circle { width: 26px !important; height: 26px !important; font-size: 10px !important; }
+  .step-label  { font-size: 10px !important; }
+}
+</style>
+
+<style id="kafook-pwa-header-fix">
+/* PWA standalone (installed app) — fixes header overlap on notched iPhones */
+
+@media (display-mode: standalone) {
+  /* ─── Header shrinks ─── */
+  header.fixed.top-0 {
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  header.fixed.top-0 > div {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header.fixed.top-0 img {
+    max-height: 26px !important;
+    height: 26px !important;
+    width: auto !important;
+  }
+  header.fixed.top-0 h1,
+  header.fixed.top-0 .text-base,
+  header.fixed.top-0 .text-lg {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  header.fixed.top-0 button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-11"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header.fixed.top-0 div[class*="w-8"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ─── Main content pushed below header + safe area ─── */
+  body > main {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  }
+
+  /* ─── Floating "طلباتي" button repositioned below header ─── */
+  body > a[href="/track.html"],
+  body > a[style*="top:76px"],
+  body > div[style*="top:76px"] {
+    top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+  }
+}
+
+/* ─── Fallback if the media query isn't supported ─── */
+body.pwa-standalone header.fixed.top-0 {
+  padding-top: env(safe-area-inset-top, 0px) !important;
+}
+body.pwa-standalone header.fixed.top-0 > div {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+body.pwa-standalone header.fixed.top-0 img {
+  max-height: 26px !important;
+}
+body.pwa-standalone header.fixed.top-0 h1,
+body.pwa-standalone header.fixed.top-0 .text-base,
+body.pwa-standalone header.fixed.top-0 .text-lg {
+  font-size: 13px !important;
+}
+body.pwa-standalone > main {
+  padding-top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+}
+body.pwa-standalone > a[href="/track.html"] {
+  top: calc(env(safe-area-inset-top, 0px) + 56px) !important;
+}
+</style>
+<link rel="stylesheet" href="/kafook-frame.css?v=20261024D">
+</head>
+<body class="kafook-bg text-gray-800 font-cairo antialiased min-h-screen flex justify-center selection:bg-royal selection:text-white pb-8">
+<!-- Mobile Container (390px iPhone Viewport constraint) -->
+<main class="w-full sm:max-w-[440px] min-h-screen px-4 pt-3 flex flex-col justify-between relative shadow-2xl bg-[#FAF5EE]/95">
+<div>
+<!-- BEGIN: TopNavigation -->
+<header class="w-full pt-1 pb-2">
+<div class="flex justify-center mb-2"><img src="/assets/kafook-logo.svg" alt="كفوك" class="h-10 object-contain"></div>
+<div class="flex items-center justify-between text-xs px-1 font-bold">
+<!-- Back button with gold star and arrow -->
+<a href="/services.html" aria-label="الرجوع للخطوة السابقة" class="inline-flex items-center gap-1.5 text-royal hover:opacity-80 transition-opacity" style="text-decoration:none;cursor:pointer;">
+<span class="text-gold text-xs leading-none">✦</span>
+<span class="text-royal font-bold text-sm tracking-wide">رجوع</span>
+<svg class="w-3.5 h-3.5 rotate-180 text-royal stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<!-- Step Indicator -->
+<span class="text-royal text-xs tracking-widest font-black">04 / 02</span>
+</div>
+<!-- Decorative Divider with Center Gold Diamond -->
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-gold-border/70"></div>
+<span class="flex-shrink mx-3 text-gold text-xs">✦</span>
+<div class="flex-grow border-t border-gold-border/70"></div>
+</div>
+</header>
+<!-- END: TopNavigation -->
+<!-- BEGIN: TrustBanner -->
+<section class="mt-1" data-purpose="trust-announcement">
+<!-- Subheader bar -->
+<div class="w-full bg-white/90 border border-gold-border/80 rounded-xl px-3 py-1.5 flex items-center justify-between text-[11px] shadow-sm">
+<div class="flex items-center gap-1.5 font-bold text-gold">
+<span>★</span>
+<span class="text-royal font-bold text-xs">كابتن كفوك معك</span>
+</div>
+<div class="text-gray-500 font-medium text-[10px]">
+            باقي نضبط الوقت اللي يريح يومك.
+          </div>
+</div>
+<!-- Trust Badges Pills -->
+<div class="flex items-center justify-between gap-1.5 mt-2.5">
+<div class="flex-1 bg-white/95 border border-gold-border/60 rounded-full py-1 px-1.5 flex items-center justify-center gap-1 shadow-xs text-royal font-bold text-[10.5px]">
+<span>ضمان رضاك</span>
+<span class="text-gold text-[11px]">✦</span>
+</div>
+<div class="flex-1 bg-white/95 border border-gold-border/60 rounded-full py-1 px-1.5 flex items-center justify-center gap-1 shadow-xs text-royal font-bold text-[10.5px]">
+<span>بدون دفع الآن</span>
+<svg class="w-3 h-3 text-royal/80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<polyline points="12 7 12 12 15 14"></polyline>
+</svg>
+</div>
+<div class="flex-1 bg-white/95 border border-gold-border/60 rounded-full py-1 px-1.5 flex items-center justify-center gap-1 shadow-xs text-royal font-bold text-[10.5px]">
+<span>موثّقون ومدرّبون</span>
+<svg class="w-3 h-3 text-royal/80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- END: TrustBanner -->
+<!-- BEGIN: HeroTitle -->
+<section class="text-center mt-4 mb-2" data-purpose="section-header">
+<h1 class="text-[27px] font-black text-royal tracking-tight mb-0.5">متى نجيك؟</h1>
+<p class="text-gray-600 text-xs font-medium">اختر اليوم والساعة اللي يكون كابتن كفوك بين يديك.</p>
+<div class="flex justify-start items-center gap-1.5 mt-3 text-royal font-bold text-xs pr-1">
+<span class="text-gold text-sm">📅</span>
+<span>اختاري اليوم</span>
+</div>
+</section>
+<!-- END: HeroTitle -->
+<!-- BEGIN: CalendarSection -->
+<section class="w-full bg-white rounded-3xl border border-gold-border/70 p-3.5 shadow-sm" data-purpose="calendar-picker">
+<!-- Calendar Month Header -->
+<div class="flex items-center justify-between mb-3 px-1">
+<button aria-label="الشهر التالي" class="w-8 h-8 rounded-xl bg-[#FAF0FF] flex items-center justify-center text-royal font-bold hover:bg-royal hover:text-white transition" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<h2 class="text-base font-extrabold text-royal font-jakarta tracking-wide">September 2026</h2>
+<button aria-label="الشهر السابق" class="w-8 h-8 rounded-xl bg-[#FAF0FF] flex items-center justify-center text-royal font-bold hover:bg-royal hover:text-white transition" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Days of the Week Header Row -->
+<div class="grid grid-cols-7 gap-1 text-center font-bold text-[11px] text-gray-400 mb-2 font-jakarta">
+<span title="السبت">سبت</span>
+<span title="الجمعة">جمعة</span>
+<span title="الخميس">خميس</span>
+<span title="الأربعاء">أربعاء</span>
+<span title="الثلاثاء">ثلاثاء</span>
+<span title="الاثنين">اثنين</span>
+<span title="الأحد">أحد</span>
+</div>
+<!-- Calendar Dates Matrix -->
+<div class="grid grid-cols-7 gap-y-2 text-center text-xs font-semibold text-royal/90 font-jakarta">
+<!-- Row 1 -->
+<span class="py-1.5 text-gray-300">5</span>
+<span class="py-1.5 text-gray-300">4</span>
+<span class="py-1.5 text-gray-300">3</span>
+<span class="py-1.5 text-gray-300">2</span>
+<span class="py-1.5 text-gray-300">1</span>
+<span class="py-1.5 text-gray-300">31</span>
+<span class="py-1.5 text-gray-300">30</span>
+<!-- Row 2 -->
+<span class="py-1.5 text-gray-300">12</span>
+<span class="py-1.5 text-gray-300">11</span>
+<span class="py-1.5 text-gray-300">10</span>
+<span class="py-1.5 text-gray-300">9</span>
+<span class="py-1.5 text-gray-300">8</span>
+<span class="py-1.5 text-gray-300">7</span>
+<span class="py-1.5 text-gray-300">6</span>
+<!-- Row 3 -->
+<span class="py-1.5 text-gray-300">19</span>
+<span class="py-1.5 text-gray-300">18</span>
+<span class="py-1.5 text-gray-300">17</span>
+<span class="py-1.5 text-gray-300">16</span>
+<span class="py-1.5 text-gray-300">15</span>
+<span class="py-1.5 text-gray-300">14</span>
+<span class="py-1.5 text-gray-300">13</span>
+<!-- Row 4: Active Week with Selected Day -->
+<span class="py-1.5 text-gray-700 hover:text-royal transition cursor-pointer">26</span>
+<span class="py-1.5 text-gray-700 hover:text-royal transition cursor-pointer">25</span>
+<span class="py-1.5 text-gray-700 hover:text-royal transition cursor-pointer">24</span>
+<span class="py-1.5 text-gray-700 hover:text-royal transition cursor-pointer">23</span>
+<span class="py-1.5 text-gray-700 hover:text-royal transition cursor-pointer">22</span>
+<!-- Selected Day Cell (21 with gold highlight base & deep purple block) -->
+<div class="relative flex items-center justify-center">
+<div class="absolute inset-0 bg-[#faecc8]/70 rounded-xl -m-0.5"></div>
+<span class="relative z-10 w-7 h-7 bg-royal text-white font-bold rounded-lg flex items-center justify-center shadow-md shadow-royal/30">
+              21
+            </span>
+</div>
+<span class="py-1.5 text-gray-300">20</span>
+<!-- Row 5 -->
+<span class="py-1.5 text-gray-700">3</span>
+<span class="py-1.5 text-gray-700">2</span>
+<span class="py-1.5 text-gray-700">1</span>
+<span class="py-1.5 text-gray-700">30</span>
+<span class="py-1.5 text-gray-700">29</span>
+<span class="py-1.5 text-gray-700">28</span>
+<span class="py-1.5 text-gray-700">27</span>
+</div>
+</section>
+<!-- END: CalendarSection -->
+<!-- BEGIN: TimeSlotSelection -->
+<section class="mt-4" data-purpose="time-picker-section">
+<!-- Header status chip: Selected Date -->
+<div class="w-full bg-[#fdfaf5] border border-gold-border/70 rounded-xl px-3 py-1.5 flex items-center justify-between text-xs mb-3 shadow-xs">
+<div class="text-royal font-bold text-[11px] flex items-center gap-1.5">
+<span>الاثنين، 21 سبتمبر</span>
+</div>
+<div class="flex items-center gap-1 text-gold font-bold text-[11px]">
+<span>موعدك المبدئي</span>
+<span>📅</span>
+</div>
+</div>
+<!-- Section Title & Subhead -->
+<div class="flex items-center justify-between px-1 mb-1">
+<span class="text-[10px] text-gray-500 font-medium">8:00 ص – 8:00 م</span>
+<div class="flex items-center gap-1.5 text-royal font-bold text-xs">
+<span>اختر الساعة</span>
+<span class="text-gold text-xs">⏱</span>
+</div>
+</div>
+<p class="text-[10px] text-gray-500 text-left px-1 mb-2.5">الساعات الظاهرة لها فريق متاح حسب جدول عمليات كفوك</p>
+<!-- Time Slots Container with Scroll Indicator -->
+<div class="relative bg-white/60 p-1.5 rounded-2xl border border-gold-border/40">
+<!-- Scrollable Grid -->
+<div class="grid grid-cols-4 gap-1.5 text-[11.5px] max-h-[190px] overflow-y-auto pl-1 pr-0.5 custom-scrollbar font-medium">
+<!-- Row 1: AM early -->
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">12:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">1:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">2:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">3:00 ص</button>
+<!-- Row 2: AM early -->
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">4:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">5:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">6:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">7:00 ص</button>
+<!-- Row 3: Prime Morning Slots (Selected 9:00 AM) -->
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">8:00 ص</button>
+<!-- Highlighted Selected Item -->
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">9:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">10:00 ص</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">11:00 ص</button>
+<!-- Row 4: Noon & Afternoon -->
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">12:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">1:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">2:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">3:00 م</button>
+<!-- Row 5: Evening -->
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">4:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">5:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">6:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-white border border-gold-border/70 text-gray-700 hover:border-royal transition font-jakarta text-center shadow-xs" type="button">7:00 م</button>
+<!-- Row 6: Night -->
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">8:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">9:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">10:00 م</button>
+<button class="py-2 px-1 rounded-xl bg-gray-50 border border-gray-200/70 text-gray-300 font-jakarta text-center" type="button">11:00 م</button>
+</div>
+</div>
+</section>
+<!-- END: TimeSlotSelection -->
+<!-- BEGIN: OperationalNoteBox -->
+<section class="mt-3" data-purpose="operational-guidance">
+<div class="w-full bg-[#FFFBF0] border border-gold-border rounded-2xl p-3 shadow-xs">
+<div class="flex items-start gap-2">
+<span class="text-gold text-base shrink-0 mt-0.5">✦</span>
+<p class="text-[11.5px] leading-relaxed text-gray-700 font-medium">
+              الساعات خارج دوام الفرق أو المحجوبة لفريق آخر ما تظهر للحجز. التنظيف بالساعة يحسب بمدته المعروفة؛ الخدمات الأخرى تبدأ كتفضيل مراجعة حتى تحدد عمليات كفوك المدة والفريق.
+            </p>
+</div>
+</div>
+</section>
+<!-- END: OperationalNoteBox -->
+</div>
+<!-- BEGIN: BottomActionsArea -->
+<footer class="mt-4 pt-2" data-purpose="actions-and-trust">
+<!-- Referral / Incentive Gold Banner -->
+<button class="w-full bg-gradient-to-r from-[#b38827] via-[#c69a35] to-[#a3791f] text-white py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-md active:scale-[0.99] transition" type="button">
+<span>خلي غيرك يستفيد</span>
+<span class="text-white text-sm">✦</span>
+</button>
+<!-- Main Next CTA Button -->
+<button class="w-full mt-2.5 bg-gradient-to-l from-royal-light via-royal to-royal-dark text-white py-3 px-5 rounded-2xl flex items-center justify-between shadow-lg shadow-royal/30 active:scale-[0.99] transition border border-gold-muted/40" type="button" onclick="location.href='/details.html'">
+<!-- Arrow on the left -->
+<svg class="w-5 h-5 text-gold-light stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<!-- CTA Label -->
+<span class="text-base font-extrabold tracking-wide">كمل التفاصيل</span>
+</button>
+<!-- Security / Footer Guarantee Strip -->
+<div class="flex items-center justify-center gap-2.5 text-gray-400 font-medium text-[11px] mt-2.5 pb-1">
+<div class="flex items-center gap-1">
+<span>طلب واضح</span>
+<svg class="w-3 h-3 text-royal/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span>بدون دفع الآن</span>
+<svg class="w-3 h-3 text-royal/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<polyline points="12 7 12 12 15 14"></polyline>
+</svg>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span>خطوة بخطوة</span>
+<span class="text-gold text-xs">✦</span>
+</div>
+</div>
+</footer>
+<!-- END: BottomActionsArea -->
+</main>
+<script src="/kafook-app.js?v=20261030A"></script>
+<script>
+(function(){
+  try {
+    var orders = JSON.parse(localStorage.getItem('kafook_my_orders') || '[]');
+    if (!orders.length) return;
+    var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    // only where it helps (home, success): on the booking steps it covered the step counter, back and close buttons
+    if (page !== 'index.html' && page !== '' && page !== 'success.html') return;
+    var btn = document.createElement('a');
+    btn.href = '/track.html';
+    btn.style.cssText = 'position:fixed;top:76px;left:16px;z-index:40;background:#5C1A6B;color:white;padding:8px 14px;border-radius:999px;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(92,26,107,0.3);';
+    btn.innerHTML = '📋 طلباتي (' + orders.length + ')';
+    document.body.appendChild(btn);
+  } catch(e){}
+})();
+</script>
+<script src="/pwa-install.js" defer></script>
+</body></html>
